@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <meta name="theme-color" content="#000000" />
-  <meta name="description" content="SimpCorp — minimal links, shopping finds, and digital picks." />
+  <meta name="theme-color" content="#f5f5f7" />
+  <meta name="description" content="SimpCorp — services, shopping picks, and contact." />
 
   <title>SimpCorp</title>
   <link rel="icon" type="image/png" href="favicon.png" />
@@ -25,57 +25,88 @@
     body {
       min-height: 100vh;
       min-height: 100dvh;
-      background: #000;
-      color: #f5f5f7;
+      background: #f5f5f7;
+      color: #111113;
       font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
       text-rendering: geometricPrecision;
     }
 
-    a, button {
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    a:visited,
+    a:active,
+    a:hover {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font-family: inherit;
+      font-size: 16px;
+    }
+
+    button,
+    a {
       -webkit-tap-highlight-color: transparent;
     }
-    a {
-  text-decoration: none;
-  color: inherit;
-}
 
-a:visited,
-a:active,
-a:hover {
-  color: inherit;
-  text-decoration: none;
-}
+    .background {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(255,255,255,0.95), transparent 28%),
+        radial-gradient(circle at 85% 80%, rgba(210,210,215,0.65), transparent 30%),
+        linear-gradient(180deg, #ffffff, #f5f5f7 55%, #ececf0);
+    }
+
+    .background::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0,0,0,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,0,0,0.025) 1px, transparent 1px);
+      background-size: 46px 46px;
+      mask-image: radial-gradient(circle, black, transparent 75%);
+    }
 
     .loader {
       position: fixed;
       inset: 0;
-      background: #000;
       z-index: 999;
       display: grid;
       place-items: center;
-      animation: hideLoader 0.8s ease forwards;
-      animation-delay: 2.6s;
+      background: #f5f5f7;
+      animation: hideLoader 0.7s ease forwards;
+      animation-delay: 1.8s;
     }
 
     .loader-ring {
-      width: 58px;
-      height: 58px;
+      width: 54px;
+      height: 54px;
       border-radius: 50%;
-      border: 1px solid rgba(255,255,255,0.15);
+      border: 1px solid rgba(0,0,0,0.12);
       display: grid;
       place-items: center;
-      background: rgba(255,255,255,0.04);
-      animation: pulse 1.4s ease-in-out infinite;
+      background: rgba(255,255,255,0.7);
+      box-shadow: 0 20px 55px rgba(0,0,0,0.08);
+      animation: pulse 1.2s ease-in-out infinite;
     }
 
     .loader-dot {
       width: 8px;
       height: 8px;
       border-radius: 50%;
-      background: white;
-      box-shadow: 0 0 22px rgba(255,255,255,0.9);
+      background: #111113;
     }
 
     @keyframes hideLoader {
@@ -87,34 +118,13 @@ a:hover {
 
     @keyframes pulse {
       0%, 100% {
-        opacity: 0.45;
         transform: scale(0.96);
+        opacity: 0.55;
       }
       50% {
-        opacity: 1;
         transform: scale(1.04);
+        opacity: 1;
       }
-    }
-
-    .background {
-      position: fixed;
-      inset: 0;
-      z-index: -1;
-      background:
-        radial-gradient(circle at 20% 15%, rgba(255,255,255,0.14), transparent 24%),
-        radial-gradient(circle at 80% 85%, rgba(255,255,255,0.1), transparent 28%),
-        linear-gradient(180deg, #090909, #000);
-    }
-
-    .background::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
-      background-size: 44px 44px;
-      mask-image: radial-gradient(circle, black, transparent 75%);
     }
 
     nav {
@@ -122,50 +132,48 @@ a:hover {
       top: 18px;
       left: 50%;
       transform: translateX(-50%);
-      z-index: 20;
-      width: min(92%, 560px);
-      padding: 10px;
+      z-index: 50;
+      width: min(92%, 640px);
+      padding: 9px;
       border-radius: 999px;
-      background: rgba(20,20,22,0.72);
-      border: 1px solid rgba(255,255,255,0.12);
-      backdrop-filter: blur(22px);
-      -webkit-backdrop-filter: blur(22px);
       display: flex;
-      justify-content: space-between;
-      gap: 8px;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+      gap: 7px;
+      background: rgba(255,255,255,0.72);
+      border: 1px solid rgba(0,0,0,0.08);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.08);
     }
 
     nav a {
       flex: 1;
       text-align: center;
-      text-decoration: none;
-      color: #c7c7cc;
+      color: #55555c;
       font-size: 14px;
-      padding: 11px 14px;
+      padding: 11px 10px;
       border-radius: 999px;
-      transition: 0.3s ease;
+      transition: 0.25s ease;
     }
 
     nav a:hover {
-      color: white;
-      background: rgba(255,255,255,0.08);
+      color: #111113;
+      background: rgba(0,0,0,0.045);
     }
 
     section {
       min-height: 100vh;
       min-height: 100dvh;
-      padding: 120px 22px 70px;
+      padding: 120px 22px 72px;
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
     .container {
-      width: min(100%, 980px);
+      width: min(100%, 1020px);
       text-align: center;
-      animation: fadeUp 1s ease both;
-      animation-delay: 2.8s;
+      animation: fadeUp 0.9s ease both;
+      animation-delay: 1.9s;
     }
 
     @keyframes fadeUp {
@@ -179,15 +187,30 @@ a:hover {
       }
     }
 
+    .glass {
+      background: rgba(255,255,255,0.68);
+      border: 1px solid rgba(0,0,0,0.075);
+      backdrop-filter: blur(26px);
+      -webkit-backdrop-filter: blur(26px);
+      box-shadow:
+        0 30px 80px rgba(0,0,0,0.08),
+        inset 0 1px 0 rgba(255,255,255,0.85);
+    }
+
+    .hero-card {
+      border-radius: 36px;
+      padding: 64px 34px;
+    }
+
     .tag {
       display: inline-flex;
       align-items: center;
       gap: 8px;
       padding: 9px 15px;
       border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.13);
-      background: rgba(255,255,255,0.045);
-      color: #c7c7cc;
+      background: rgba(255,255,255,0.74);
+      border: 1px solid rgba(0,0,0,0.07);
+      color: #66666d;
       font-size: 13px;
       margin-bottom: 24px;
     }
@@ -196,205 +219,342 @@ a:hover {
       width: 7px;
       height: 7px;
       border-radius: 50%;
-      background: white;
-      box-shadow: 0 0 14px rgba(255,255,255,0.8);
+      background: #111113;
     }
 
     h1 {
-  font-size: clamp(60px, 13vw, 142px);
-  line-height: 1.08;
-  letter-spacing: -6px;
-  padding-bottom: 8px;
-  background: linear-gradient(180deg, #fff, #8d8d93);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
+      font-size: clamp(62px, 13vw, 142px);
+      line-height: 1.08;
+      letter-spacing: -6px;
+      padding-bottom: 8px;
+      background: linear-gradient(180deg, #111113, #6e6e73);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
 
     h2 {
-  font-size: clamp(36px, 7vw, 78px);
-  line-height: 1.12;
-  letter-spacing: -3px;
-  padding-bottom: 6px;
-  background: linear-gradient(180deg, #fff, #96969b);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
+      font-size: clamp(40px, 7vw, 78px);
+      line-height: 1.12;
+      letter-spacing: -3px;
+      padding-bottom: 6px;
+      background: linear-gradient(180deg, #111113, #74747a);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
     .subtitle {
-      margin: 24px auto 0;
-      max-width: 620px;
-      color: #a1a1a6;
+      margin: 20px auto 0;
+      max-width: 630px;
+      color: #66666d;
       font-size: clamp(17px, 2.5vw, 24px);
-      line-height: 1.55;
-      letter-spacing: -0.4px;
+      line-height: 1.5;
+      letter-spacing: -0.35px;
     }
 
     .small-text {
-      margin: 18px auto 0;
+      margin: 16px auto 0;
       max-width: 560px;
-      color: #73737a;
+      color: #8a8a91;
       font-size: 15px;
       line-height: 1.7;
     }
 
-    .glass {
-      border: 1px solid rgba(255,255,255,0.12);
-      background: rgba(255,255,255,0.045);
-      backdrop-filter: blur(26px);
-      -webkit-backdrop-filter: blur(26px);
-      border-radius: 32px;
-      box-shadow:
-        0 30px 90px rgba(0,0,0,0.45),
-        inset 0 1px 0 rgba(255,255,255,0.08);
-    }
-
-    .home-card {
-      padding: 60px 34px;
-    }
-
-    .quick-actions {
-      margin-top: 36px;
+    .actions {
+      margin-top: 34px;
       display: flex;
       justify-content: center;
-      flex-wrap: wrap;
       gap: 12px;
+      flex-wrap: wrap;
     }
 
     .btn {
-      border: 1px solid rgba(255,255,255,0.16);
-      background: rgba(255,255,255,0.07);
-      color: #f5f5f7;
-      text-decoration: none;
+      border: 1px solid rgba(0,0,0,0.09);
+      background: rgba(255,255,255,0.74);
+      color: #111113;
       padding: 14px 22px;
       border-radius: 999px;
-      font-size: 15px;
-      transition: 0.28s ease;
       cursor: pointer;
+      transition: 0.25s ease;
+      box-shadow: 0 14px 36px rgba(0,0,0,0.06);
     }
 
     .btn:hover {
-      background: rgba(255,255,255,0.15);
       transform: translateY(-3px);
+      background: #ffffff;
+    }
+
+    .btn.dark {
+      background: #111113;
+      color: #f5f5f7;
+      border-color: #111113;
     }
 
     .grid {
-      margin-top: 38px;
+      margin-top: 36px;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 16px;
     }
 
     .tile {
+      min-height: 150px;
       padding: 24px;
+      border-radius: 28px;
       text-align: left;
-      min-height: 145px;
-      transition: 0.3s ease;
+      transition: 0.25s ease;
     }
 
     .tile:hover {
-      transform: translateY(-6px);
-      background: rgba(255,255,255,0.07);
+      transform: translateY(-5px);
+      background: rgba(255,255,255,0.9);
     }
 
     .tile span {
       display: block;
-      color: #8e8e93;
+      color: #8a8a91;
       font-size: 12px;
-      margin-bottom: 12px;
-      text-transform: uppercase;
       letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
     }
 
     .tile h3 {
-      color: #f5f5f7;
       font-size: 22px;
       margin-bottom: 10px;
       letter-spacing: -0.5px;
+      color: #111113;
     }
 
     .tile p {
-      color: #8e8e93;
+      color: #74747a;
       font-size: 14px;
       line-height: 1.55;
     }
 
+    .service-btn {
+      width: 100%;
+      cursor: pointer;
+      border: none;
+    }
+
     .contact-card {
-      padding: 42px;
-      margin-top: 36px;
+      margin-top: 34px;
+      border-radius: 30px;
+      padding: 24px;
       display: grid;
       gap: 14px;
     }
 
     .contact-link {
+      padding: 18px 20px;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.58);
+      border: 1px solid rgba(0,0,0,0.07);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 14px;
-      padding: 18px 20px;
-      border-radius: 22px;
-      color: #f5f5f7;
-      text-decoration: none;
-      background: rgba(255,255,255,0.045);
-      border: 1px solid rgba(255,255,255,0.1);
-      transition: 0.28s ease;
+      text-align: left;
+      transition: 0.25s ease;
     }
 
     .contact-link:hover {
-      background: rgba(255,255,255,0.1);
       transform: translateY(-3px);
+      background: #ffffff;
     }
 
     .contact-link small {
-      color: #8e8e93;
+      display: block;
+      color: #8a8a91;
       font-size: 13px;
+      margin-bottom: 3px;
     }
 
     .contact-link strong {
-      font-size: 16px;
       font-weight: 500;
     }
 
     .disclaimer {
-      margin-top: 26px;
-      color: #66666d;
+      margin-top: 22px;
+      color: #8a8a91;
       font-size: 12px;
       line-height: 1.6;
     }
 
     footer {
-      padding: 26px 20px 36px;
       text-align: center;
-      color: #66666d;
+      padding: 28px 20px 38px;
+      color: #8a8a91;
       font-size: 13px;
+    }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      background: rgba(0,0,0,0.32);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+
+    .modal.show {
+      display: flex;
+    }
+
+    .modal-box {
+      width: min(100%, 520px);
+      max-height: 92dvh;
+      overflow-y: auto;
+      border-radius: 32px;
+      background: rgba(255,255,255,0.92);
+      border: 1px solid rgba(0,0,0,0.09);
+      box-shadow: 0 40px 100px rgba(0,0,0,0.22);
+      padding: 24px;
+      animation: modalIn 0.25s ease both;
+    }
+
+    @keyframes modalIn {
+      from {
+        opacity: 0;
+        transform: translateY(12px) scale(0.98);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .modal-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .modal-head h3 {
+      font-size: 26px;
+      letter-spacing: -0.8px;
+      line-height: 1.1;
+    }
+
+    .modal-head p {
+      color: #77777e;
+      font-size: 14px;
+      margin-top: 7px;
+      line-height: 1.5;
+    }
+
+    .close-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: 1px solid rgba(0,0,0,0.08);
+      background: rgba(0,0,0,0.045);
+      cursor: pointer;
+      color: #111113;
+    }
+
+    form {
+      display: grid;
+      gap: 13px;
+    }
+
+    label {
+      text-align: left;
+      color: #55555c;
+      font-size: 13px;
+      margin-bottom: -6px;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      border: 1px solid rgba(0,0,0,0.1);
+      background: rgba(255,255,255,0.78);
+      color: #111113;
+      border-radius: 17px;
+      padding: 14px 15px;
+      outline: none;
+      transition: 0.2s ease;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: rgba(0,0,0,0.28);
+      background: #ffffff;
+    }
+
+    textarea {
+      min-height: 112px;
+      resize: vertical;
+    }
+
+    .phone-row {
+      display: grid;
+      grid-template-columns: 135px 1fr;
+      gap: 10px;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .submit-btn {
+      margin-top: 8px;
+      border: none;
+      background: #111113;
+      color: #f5f5f7;
+      border-radius: 999px;
+      padding: 15px 20px;
+      cursor: pointer;
+      transition: 0.25s ease;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .note {
+      color: #8a8a91;
+      font-size: 12px;
+      line-height: 1.5;
+      text-align: center;
     }
 
     @media (max-width: 760px) {
       nav {
         top: 12px;
-        width: min(94%, 420px);
+        width: min(94%, 430px);
       }
 
       nav a {
         font-size: 13px;
-        padding: 10px 8px;
+        padding: 10px 6px;
       }
 
       section {
-        padding: 105px 16px 54px;
+        padding: 105px 16px 56px;
+      }
+
+      .hero-card {
+        padding: 44px 20px;
+        border-radius: 30px;
       }
 
       h1 {
-        font-size: clamp(58px, 19vw, 86px);
+        font-size: clamp(58px, 19vw, 88px);
         letter-spacing: -3px;
       }
 
       h2 {
-        font-size: clamp(40px, 13vw, 62px);
+        font-size: clamp(40px, 13vw, 64px);
         letter-spacing: -2px;
-      }
-
-      .home-card {
-        padding: 42px 20px;
-        border-radius: 28px;
       }
 
       .subtitle {
@@ -409,21 +569,27 @@ a:hover {
         min-height: auto;
       }
 
-      .contact-card {
-        padding: 20px;
-        border-radius: 28px;
+      .phone-row {
+        grid-template-columns: 1fr;
       }
 
       .contact-link {
         align-items: flex-start;
         flex-direction: column;
-        padding: 17px;
+      }
+
+      .modal-box {
+        border-radius: 26px;
+        padding: 20px;
       }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
+      *,
+      *::before,
+      *::after {
         animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
         transition-duration: 0.001ms !important;
         scroll-behavior: auto !important;
       }
@@ -451,12 +617,13 @@ a:hover {
   <nav>
     <a href="#home">Home</a>
     <a href="#shopping">Shopping</a>
+    <a href="#services">Services</a>
     <a href="#contact">Contact</a>
   </nav>
 
   <section id="home">
     <div class="container">
-      <div class="home-card glass">
+      <div class="hero-card glass">
         <div class="tag">
           <span class="tag-dot"></span>
           minimal digital hub
@@ -464,17 +631,11 @@ a:hover {
 
         <h1>simpcorp</h1>
 
-        <p class="subtitle">
-          clean picks, useful links, and quiet internet taste.
-        </p>
+        <p class="subtitle">clean services, useful picks, and simple digital work.</p>
 
-        <p class="small-text">
-          A simple space for socials, curated shopping categories, and future digital tools.
-        </p>
-
-        <div class="quick-actions">
+        <div class="actions">
+          <a class="btn dark" href="#services">View services</a>
           <a class="btn" href="#shopping">Explore shopping</a>
-          <a class="btn" href="#contact">Contact</a>
         </div>
       </div>
     </div>
@@ -489,51 +650,76 @@ a:hover {
 
       <h2>shopping</h2>
 
-      <p class="subtitle">
-        Minimal categories for product finds, deals, and useful recommendations.
-      </p>
-
       <div class="grid">
         <a class="tile glass" href="#">
           <span>category</span>
           <h3>Electronics</h3>
-          <p>Phones, laptops, accessories, audio, and practical tech picks.</p>
+          <p>Phones, laptops, audio, accessories, and practical tech picks.</p>
         </a>
 
         <a class="tile glass" href="#">
           <span>category</span>
           <h3>Fashion</h3>
-          <p>Clean outfits, basics, watches, shoes, and everyday style.</p>
+          <p>Basics, watches, shoes, and clean everyday style.</p>
         </a>
 
         <a class="tile glass" href="#">
           <span>category</span>
           <h3>Food</h3>
-          <p>Snacks, cafés, student-friendly picks, and budget food finds.</p>
+          <p>Student-friendly snacks, cafés, and budget food finds.</p>
         </a>
 
         <a class="tile glass" href="#">
           <span>category</span>
           <h3>Student Deals</h3>
-          <p>Useful products and services for students without wasting money.</p>
+          <p>Useful products and services without wasting money.</p>
         </a>
 
         <a class="tile glass" href="#">
           <span>category</span>
           <h3>Apps</h3>
-          <p>Editing tools, productivity apps, AI tools, and creator software.</p>
+          <p>Editing, productivity, AI tools, and creator software.</p>
         </a>
 
         <a class="tile glass" href="#">
           <span>category</span>
           <h3>Minimal Picks</h3>
-          <p>Products that match the SimpCorp aesthetic: clean, useful, low-noise.</p>
+          <p>Clean, useful, low-noise products that match the vibe.</p>
         </a>
       </div>
 
-      <p class="disclaimer">
-        Some recommendations may later include promotional or affiliate links. No fake hype, no trash picks.
-      </p>
+      <p class="disclaimer">Some links may later be promotional or affiliate-based.</p>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="container">
+      <div class="tag">
+        <span class="tag-dot"></span>
+        available work
+      </div>
+
+      <h2>services</h2>
+
+      <div class="grid">
+        <button class="tile glass service-btn" onclick="openService('Website Building')">
+          <span>service</span>
+          <h3>Build Similar Websites</h3>
+          <p>Minimal one-page websites for people, creators, and small businesses.</p>
+        </button>
+
+        <button class="tile glass service-btn" onclick="openService('Utility Office Tools')">
+          <span>service</span>
+          <h3>Small Utility Tools</h3>
+          <p>Simple office/student tools, calculators, trackers, and lightweight software.</p>
+        </button>
+
+        <button class="tile glass service-btn" onclick="openService('Social Media Management')">
+          <span>service</span>
+          <h3>Manage Social Media</h3>
+          <p>Page handling, posting support, content ideas, and account organization.</p>
+        </button>
+      </div>
     </div>
   </section>
 
@@ -546,14 +732,10 @@ a:hover {
 
       <h2>contact</h2>
 
-      <p class="subtitle">
-        Find me here. Keep it normal, don’t be weird.
-      </p>
-
       <div class="contact-card glass">
         <a class="contact-link" href="https://www.instagram.com/simpcorpone" target="_blank" rel="noopener noreferrer">
           <div>
-            <small>Instagram</small><br />
+            <small>Instagram</small>
             <strong>@simpcorpone</strong>
           </div>
           <span>open</span>
@@ -561,7 +743,7 @@ a:hover {
 
         <a class="contact-link" href="https://www.reddit.com/user/hawt_ice" target="_blank" rel="noopener noreferrer">
           <div>
-            <small>Reddit</small><br />
+            <small>Reddit</small>
             <strong>u/hawt_ice</strong>
           </div>
           <span>open</span>
@@ -569,7 +751,7 @@ a:hover {
 
         <a class="contact-link" href="mailto:simpcorp@icloud.com">
           <div>
-            <small>Email</small><br />
+            <small>Email</small>
             <strong>simpcorp@icloud.com</strong>
           </div>
           <span>mail</span>
@@ -579,7 +761,99 @@ a:hover {
   </section>
 
   <footer>
-    © 2026 SimpCorp. Built minimal.
+    © 2026 SimpCorp
   </footer>
+
+  <div class="modal" id="serviceModal">
+    <div class="modal-box">
+      <div class="modal-head">
+        <div>
+          <h3 id="modalTitle">Service request</h3>
+          <p>Enter the details. I’ll receive it directly by email.</p>
+        </div>
+        <button class="close-btn" onclick="closeService()" type="button">×</button>
+      </div>
+
+      <form action="https://formspree.io/f/xqenlvqd" method="POST">
+        <input type="hidden" name="selected_service" id="selectedService" />
+
+        <label for="name">Name</label>
+        <input id="name" name="name" type="text" placeholder="Your name" required />
+
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" placeholder="your@email.com" />
+
+        <label for="phone">Phone number</label>
+        <div class="phone-row">
+          <select id="countryCode" name="country_code">
+            <option value="+91">🇮🇳 +91</option>
+            <option value="+1">🇺🇸 +1</option>
+            <option value="+44">🇬🇧 +44</option>
+            <option value="+971">🇦🇪 +971</option>
+            <option value="+49">🇩🇪 +49</option>
+            <option value="+61">🇦🇺 +61</option>
+            <option value="+81">🇯🇵 +81</option>
+            <option value="+82">🇰🇷 +82</option>
+            <option value="+65">🇸🇬 +65</option>
+            <option value="+33">🇫🇷 +33</option>
+          </select>
+          <input id="phone" name="phone" type="tel" placeholder="Phone number" />
+        </div>
+
+        <div id="socialHandleBox" class="hidden">
+          <label for="socialHandle">Social media handle</label>
+          <input id="socialHandle" name="social_media_handle" type="text" placeholder="@username or page link" />
+        </div>
+
+        <label for="message">What do you want?</label>
+        <textarea id="message" name="message" placeholder="Describe it shortly..." required></textarea>
+
+        <button class="submit-btn" type="submit">Send request</button>
+
+        <p class="note">Add either email or phone number so I can contact you back.</p>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    var modal = document.getElementById("serviceModal");
+    var modalTitle = document.getElementById("modalTitle");
+    var selectedService = document.getElementById("selectedService");
+    var socialHandleBox = document.getElementById("socialHandleBox");
+    var socialHandle = document.getElementById("socialHandle");
+
+    function openService(serviceName) {
+      selectedService.value = serviceName;
+      modalTitle.textContent = serviceName;
+      modal.classList.add("show");
+      document.body.style.overflow = "hidden";
+
+      if (serviceName === "Social Media Management") {
+        socialHandleBox.classList.remove("hidden");
+        socialHandle.required = true;
+      } else {
+        socialHandleBox.classList.add("hidden");
+        socialHandle.required = false;
+        socialHandle.value = "";
+      }
+    }
+
+    function closeService() {
+      modal.classList.remove("show");
+      document.body.style.overflow = "";
+    }
+
+    modal.addEventListener("click", function(event) {
+      if (event.target === modal) {
+        closeService();
+      }
+    });
+
+    document.addEventListener("keydown", function(event) {
+      if (event.key === "Escape") {
+        closeService();
+      }
+    });
+  </script>
 </body>
 </html>
