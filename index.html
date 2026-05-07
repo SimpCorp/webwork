@@ -7,7 +7,7 @@
   <meta name="description" content="SimpCorp — websites, utility tools, social media management, and curated shopping sections." />
 
   <title>SimpCorp</title>
-  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="icon" type="image/png" href="logoicon.png" />
 
   <style>
     * {
@@ -343,39 +343,107 @@
       cursor: pointer;
     }
 
-    .contact-card {
-      margin: 36px auto 0;
-      max-width: 720px;
-      padding: 22px;
+    .contact-layout {
+      margin: 38px auto 0;
+      max-width: 900px;
       display: grid;
-      gap: 14px;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 18px;
+      text-align: left;
     }
 
-    .contact-link {
-      padding: 18px 20px;
+    .contact-main,
+    .contact-side {
+      padding: 28px;
+      border-radius: 30px;
+    }
+
+    .contact-main h3,
+    .contact-side h3 {
+      font-size: 26px;
+      letter-spacing: -0.7px;
+      margin-bottom: 10px;
+    }
+
+    .contact-main p,
+    .contact-side p {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.65;
+    }
+
+    .contact-methods {
+      margin-top: 24px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .contact-method {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 16px;
       border-radius: 22px;
       background: var(--surface-strong);
       border: 1px solid var(--border);
-      display: flex;
-      justify-content: space-between;
-      gap: 18px;
-      text-align: left;
       transition: 0.25s ease;
     }
 
-    .contact-link:hover {
+    .contact-method:hover {
       transform: translateY(-3px);
     }
 
-    .contact-link small {
-      display: block;
-      color: var(--soft);
-      font-size: 13px;
-      margin-bottom: 4px;
+    .icon-box {
+      width: 44px;
+      height: 44px;
+      min-width: 44px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      background: var(--accent);
+      color: var(--accent-text);
     }
 
-    .contact-link strong {
-      font-weight: 500;
+    .icon-box svg {
+      width: 21px;
+      height: 21px;
+      stroke-width: 1.9;
+    }
+
+    .method-text small {
+      display: block;
+      color: var(--soft);
+      font-size: 12px;
+      margin-bottom: 3px;
+      text-transform: uppercase;
+      letter-spacing: 0.9px;
+    }
+
+    .method-text strong {
+      font-weight: 520;
+      color: var(--text);
+      word-break: break-word;
+    }
+
+    .contact-note {
+      margin-top: 22px;
+      padding: 18px;
+      border-radius: 22px;
+      background: var(--surface-strong);
+      border: 1px solid var(--border);
+    }
+
+    .contact-note strong {
+      display: block;
+      font-size: 15px;
+      margin-bottom: 6px;
+    }
+
+    .contact-cta {
+      margin-top: 24px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
     }
 
     .disclaimer {
@@ -580,12 +648,25 @@
         min-height: auto;
       }
 
-      .phone-row {
+      .contact-layout {
         grid-template-columns: 1fr;
       }
 
-      .contact-link {
+      .contact-main,
+      .contact-side {
+        padding: 22px;
+      }
+
+      .contact-cta {
         flex-direction: column;
+      }
+
+      .contact-cta .btn {
+        text-align: center;
+      }
+
+      .phone-row {
+        grid-template-columns: 1fr;
       }
 
       .modal-box {
@@ -637,7 +718,7 @@
         <p class="eyebrow">Digital services & curated picks</p>
         <h1>simpcorp</h1>
         <p class="subtitle">
-          Minimal websites, useful tools, social media support, and carefully selected recommendations.
+          minimalism and professionalism re-imagined
         </p>
 
         <div class="actions">
@@ -698,21 +779,61 @@
       <p class="eyebrow">Reach out</p>
       <h2>contact</h2>
 
-      <div class="contact-card panel">
-        <a class="contact-link" href="https://www.instagram.com/simpcorpone" target="_blank" rel="noopener noreferrer">
-          <div><small>Instagram</small><strong>@simpcorpone</strong></div>
-          <span>open</span>
-        </a>
+      <div class="contact-layout">
+        <div class="contact-main panel">
+          <h3>Start a conversation</h3>
+          <p>
+            For websites, utility tools, page management, collaborations, or general enquiries,
+            use the contact options below.
+          </p>
 
-        <a class="contact-link" href="https://www.reddit.com/user/hawt_ice" target="_blank" rel="noopener noreferrer">
-          <div><small>Reddit</small><strong>u/hawt_ice</strong></div>
-          <span>open</span>
-        </a>
+          <div class="contact-methods">
+            <a class="contact-method" href="mailto:simpcorp@icloud.com">
+              <div class="icon-box">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+                  <path d="M3 7l9 6 9-6"></path>
+                </svg>
+              </div>
+              <div class="method-text">
+                <small>Email</small>
+                <strong>simpcorp@icloud.com</strong>
+              </div>
+            </a>
 
-        <a class="contact-link" href="mailto:simpcorp@icloud.com">
-          <div><small>Email</small><strong>simpcorp@icloud.com</strong></div>
-          <span>mail</span>
-        </a>
+            <a class="contact-method" href="https://www.instagram.com/simpcorpone" target="_blank" rel="noopener noreferrer">
+              <div class="icon-box">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+                  <circle cx="12" cy="12" r="4"></circle>
+                  <circle cx="17.5" cy="6.5" r="1"></circle>
+                </svg>
+              </div>
+              <div class="method-text">
+                <small>Instagram</small>
+                <strong>@simpcorpone</strong>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="contact-side panel">
+          <h3>Work requests</h3>
+          <p>
+            For service-related work, use the request form from the Services section.
+            It helps keep the details clear and easy to reply to.
+          </p>
+
+          <div class="contact-note">
+            <strong>Preferred details</strong>
+            <p>Name, contact info, service type, and a short requirement description.</p>
+          </div>
+
+          <div class="contact-cta">
+            <a class="btn primary" href="#services">Choose a service</a>
+            <a class="btn" href="mailto:simpcorp@icloud.com">Email directly</a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
