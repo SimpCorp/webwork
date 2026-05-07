@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <meta name="theme-color" content="#f5f5f7" />
-  <meta name="description" content="SimpCorp — services, shopping picks, and contact." />
+  <meta name="theme-color" content="#f7f7f5" />
+  <meta name="description" content="SimpCorp — websites, utility tools, social media management, and curated shopping sections." />
 
   <title>SimpCorp</title>
   <link rel="icon" type="image/png" href="favicon.png" />
@@ -17,39 +17,31 @@
     }
 
     :root {
-      --bg: #f5f5f7;
-      --text: #111113;
-      --muted: #66666d;
-      --soft: #8a8a91;
-      --glass: rgba(255,255,255,0.68);
-      --glass-strong: rgba(255,255,255,0.9);
-      --border: rgba(0,0,0,0.075);
-      --shadow: rgba(0,0,0,0.08);
-      --nav: rgba(255,255,255,0.72);
-      --button: rgba(255,255,255,0.74);
-      --button-hover: #ffffff;
-      --invert: #111113;
-      --invert-text: #f5f5f7;
-      --gradient-one: #ffffff;
-      --gradient-two: #ececf0;
+      --bg: #f7f7f5;
+      --surface: rgba(255, 255, 255, 0.72);
+      --surface-strong: rgba(255, 255, 255, 0.96);
+      --text: #171717;
+      --muted: #676767;
+      --soft: #8a8a8a;
+      --border: rgba(0, 0, 0, 0.09);
+      --shadow: rgba(0, 0, 0, 0.08);
+      --nav: rgba(255, 255, 255, 0.76);
+      --accent: #171717;
+      --accent-text: #ffffff;
     }
 
     body.dark {
-      --bg: #000000;
-      --text: #f5f5f7;
-      --muted: #a1a1a6;
-      --soft: #77777e;
-      --glass: rgba(255,255,255,0.055);
-      --glass-strong: rgba(25,25,27,0.92);
-      --border: rgba(255,255,255,0.12);
-      --shadow: rgba(0,0,0,0.45);
-      --nav: rgba(20,20,22,0.72);
-      --button: rgba(255,255,255,0.08);
-      --button-hover: rgba(255,255,255,0.16);
-      --invert: #f5f5f7;
-      --invert-text: #111113;
-      --gradient-one: #090909;
-      --gradient-two: #000000;
+      --bg: #090909;
+      --surface: rgba(255, 255, 255, 0.055);
+      --surface-strong: rgba(22, 22, 22, 0.96);
+      --text: #f5f5f5;
+      --muted: #adadad;
+      --soft: #7d7d7d;
+      --border: rgba(255, 255, 255, 0.13);
+      --shadow: rgba(0, 0, 0, 0.48);
+      --nav: rgba(18, 18, 18, 0.76);
+      --accent: #f5f5f5;
+      --accent-text: #090909;
     }
 
     html {
@@ -63,21 +55,13 @@
       min-height: 100dvh;
       background: var(--bg);
       color: var(--text);
-      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Arial, sans-serif;
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
-      text-rendering: geometricPrecision;
       transition: background 0.35s ease, color 0.35s ease;
     }
 
     a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    a:visited,
-    a:active,
-    a:hover {
       color: inherit;
       text-decoration: none;
     }
@@ -100,34 +84,17 @@
       inset: 0;
       z-index: -1;
       background:
-        radial-gradient(circle at 15% 20%, rgba(255,255,255,0.9), transparent 28%),
-        radial-gradient(circle at 85% 80%, rgba(170,170,180,0.45), transparent 30%),
-        linear-gradient(180deg, var(--gradient-one), var(--bg) 55%, var(--gradient-two));
+        radial-gradient(circle at 20% 15%, rgba(255,255,255,0.9), transparent 30%),
+        radial-gradient(circle at 85% 85%, rgba(220,220,220,0.7), transparent 32%),
+        linear-gradient(180deg, #ffffff, var(--bg));
       transition: 0.35s ease;
     }
 
     body.dark .background {
       background:
-        radial-gradient(circle at 20% 18%, rgba(255,255,255,0.14), transparent 25%),
-        radial-gradient(circle at 80% 82%, rgba(255,255,255,0.10), transparent 28%),
-        linear-gradient(180deg, #090909, #000000);
-    }
-
-    .background::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(0,0,0,0.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0,0,0,0.025) 1px, transparent 1px);
-      background-size: 46px 46px;
-      mask-image: radial-gradient(circle, black, transparent 75%);
-    }
-
-    body.dark .background::after {
-      background-image:
-        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+        radial-gradient(circle at 20% 15%, rgba(255,255,255,0.08), transparent 30%),
+        radial-gradient(circle at 85% 85%, rgba(255,255,255,0.05), transparent 32%),
+        linear-gradient(180deg, #101010, #000000);
     }
 
     .loader {
@@ -137,25 +104,25 @@
       display: grid;
       place-items: center;
       background: var(--bg);
-      animation: hideLoader 0.7s ease forwards;
-      animation-delay: 1.4s;
+      animation: hideLoader 0.55s ease forwards;
+      animation-delay: 1s;
     }
 
-    .loader-ring {
-      width: 54px;
-      height: 54px;
+    .loader-mark {
+      width: 44px;
+      height: 44px;
       border-radius: 50%;
       border: 1px solid var(--border);
+      background: var(--surface);
       display: grid;
       place-items: center;
-      background: var(--glass);
-      box-shadow: 0 20px 55px var(--shadow);
-      animation: pulse 1.2s ease-in-out infinite;
+      box-shadow: 0 18px 45px var(--shadow);
     }
 
-    .loader-dot {
-      width: 8px;
-      height: 8px;
+    .loader-mark::after {
+      content: "";
+      width: 7px;
+      height: 7px;
       border-radius: 50%;
       background: var(--text);
     }
@@ -167,80 +134,82 @@
       }
     }
 
-    @keyframes pulse {
-      0%, 100% {
-        transform: scale(0.96);
-        opacity: 0.55;
-      }
-      50% {
-        transform: scale(1.04);
-        opacity: 1;
-      }
-    }
-
     nav {
       position: fixed;
       top: 18px;
       left: 50%;
       transform: translateX(-50%);
       z-index: 50;
-      width: min(94%, 760px);
-      padding: 9px;
+      width: min(92%, 560px);
+      padding: 8px;
       border-radius: 999px;
-      display: flex;
-      gap: 7px;
       background: var(--nav);
       border: 1px solid var(--border);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
-      box-shadow: 0 20px 60px var(--shadow);
+      backdrop-filter: blur(22px);
+      -webkit-backdrop-filter: blur(22px);
+      display: flex;
+      gap: 6px;
+      box-shadow: 0 18px 55px var(--shadow);
     }
 
-    nav a,
-    .theme-toggle {
+    nav a {
       flex: 1;
       text-align: center;
+      padding: 10px 8px;
+      border-radius: 999px;
       color: var(--muted);
       font-size: 14px;
-      padding: 11px 10px;
-      border-radius: 999px;
       transition: 0.25s ease;
-      border: none;
-      background: transparent;
-      cursor: pointer;
     }
 
-    nav a:hover,
-    .theme-toggle:hover {
-      color: var(--text);
+    nav a:hover {
       background: rgba(127,127,127,0.12);
+      color: var(--text);
     }
 
     .theme-toggle {
-      max-width: 88px;
+      position: fixed;
+      top: 18px;
+      right: 22px;
+      z-index: 60;
+      padding: 12px 16px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--nav);
+      color: var(--muted);
+      backdrop-filter: blur(22px);
+      -webkit-backdrop-filter: blur(22px);
+      box-shadow: 0 18px 55px var(--shadow);
+      cursor: pointer;
+      transition: 0.25s ease;
+    }
+
+    .theme-toggle:hover {
+      color: var(--text);
+      transform: translateY(-2px);
     }
 
     section {
       min-height: 100vh;
       min-height: 100dvh;
-      padding: 120px 22px 72px;
+      padding: 120px 22px 76px;
       display: flex;
       align-items: center;
       justify-content: center;
-      scroll-margin-top: 80px;
+      scroll-margin-top: 90px;
     }
 
     .container {
-      width: min(100%, 1020px);
+      width: min(100%, 1040px);
       text-align: center;
-      animation: fadeUp 0.9s ease both;
-      animation-delay: 1.45s;
+      animation: fadeUp 0.75s ease both;
+      animation-delay: 1.1s;
     }
 
     @keyframes fadeUp {
       from {
         opacity: 0;
-        transform: translateY(18px);
+        transform: translateY(14px);
       }
       to {
         opacity: 1;
@@ -248,68 +217,50 @@
       }
     }
 
-    .glass {
-      background: var(--glass);
+    .panel {
+      background: var(--surface);
       border: 1px solid var(--border);
-      backdrop-filter: blur(26px);
-      -webkit-backdrop-filter: blur(26px);
-      box-shadow:
-        0 30px 80px var(--shadow),
-        inset 0 1px 0 rgba(255,255,255,0.25);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      box-shadow: 0 28px 80px var(--shadow);
+      border-radius: 34px;
     }
 
-    .hero-card {
-      border-radius: 36px;
-      padding: 64px 34px;
+    .hero {
+      padding: 68px 36px;
     }
 
-    .tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 9px 15px;
-      border-radius: 999px;
-      background: var(--glass);
-      border: 1px solid var(--border);
-      color: var(--muted);
+    .eyebrow {
+      color: var(--soft);
       font-size: 13px;
-      margin-bottom: 24px;
-    }
-
-    .tag-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--text);
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      margin-bottom: 22px;
     }
 
     h1 {
-      font-size: clamp(62px, 13vw, 142px);
+      font-size: clamp(64px, 12vw, 138px);
       line-height: 1.08;
       letter-spacing: -6px;
       padding-bottom: 8px;
-      background: linear-gradient(180deg, var(--text), var(--soft));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      font-weight: 720;
     }
 
     h2 {
-      font-size: clamp(40px, 7vw, 78px);
+      font-size: clamp(42px, 7vw, 76px);
       line-height: 1.12;
       letter-spacing: -3px;
-      padding-bottom: 6px;
-      background: linear-gradient(180deg, var(--text), var(--soft));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      padding-bottom: 8px;
+      font-weight: 700;
     }
 
     .subtitle {
-      margin: 20px auto 0;
-      max-width: 630px;
+      margin: 18px auto 0;
+      max-width: 640px;
       color: var(--muted);
-      font-size: clamp(17px, 2.5vw, 24px);
-      line-height: 1.5;
-      letter-spacing: -0.35px;
+      font-size: clamp(17px, 2.3vw, 23px);
+      line-height: 1.55;
+      letter-spacing: -0.3px;
     }
 
     .actions {
@@ -322,24 +273,23 @@
 
     .btn {
       border: 1px solid var(--border);
-      background: var(--button);
+      background: var(--surface-strong);
       color: var(--text);
       padding: 14px 22px;
       border-radius: 999px;
       cursor: pointer;
       transition: 0.25s ease;
-      box-shadow: 0 14px 36px var(--shadow);
+      box-shadow: 0 12px 34px var(--shadow);
+    }
+
+    .btn.primary {
+      background: var(--accent);
+      color: var(--accent-text);
+      border-color: var(--accent);
     }
 
     .btn:hover {
       transform: translateY(-3px);
-      background: var(--button-hover);
-    }
-
-    .btn.dark-btn {
-      background: var(--invert);
-      color: var(--invert-text);
-      border-color: var(--invert);
     }
 
     .grid {
@@ -349,52 +299,54 @@
       gap: 16px;
     }
 
-    .tile {
-      min-height: 150px;
-      padding: 24px;
+    .card {
+      min-height: 152px;
+      padding: 26px;
       border-radius: 28px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      box-shadow: 0 22px 65px var(--shadow);
       text-align: left;
       transition: 0.25s ease;
-      color: var(--text);
     }
 
-    .tile:hover {
+    .card:hover {
       transform: translateY(-5px);
-      background: var(--glass-strong);
+      background: var(--surface-strong);
     }
 
-    .tile span {
+    .card span {
       display: block;
       color: var(--soft);
       font-size: 12px;
-      letter-spacing: 1px;
       text-transform: uppercase;
+      letter-spacing: 1.2px;
       margin-bottom: 12px;
     }
 
-    .tile h3 {
+    .card h3 {
       font-size: 22px;
-      margin-bottom: 10px;
       letter-spacing: -0.5px;
+      margin-bottom: 10px;
       color: var(--text);
     }
 
-    .tile p {
+    .card p {
       color: var(--muted);
       font-size: 14px;
-      line-height: 1.55;
+      line-height: 1.6;
     }
 
-    .service-btn {
+    .service-card {
       width: 100%;
-      cursor: pointer;
       border: 1px solid var(--border);
+      cursor: pointer;
     }
 
     .contact-card {
-      margin-top: 34px;
-      border-radius: 30px;
-      padding: 24px;
+      margin: 36px auto 0;
+      max-width: 720px;
+      padding: 22px;
       display: grid;
       gap: 14px;
     }
@@ -402,25 +354,24 @@
     .contact-link {
       padding: 18px 20px;
       border-radius: 22px;
-      background: var(--button);
+      background: var(--surface-strong);
       border: 1px solid var(--border);
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      gap: 18px;
       text-align: left;
       transition: 0.25s ease;
     }
 
     .contact-link:hover {
       transform: translateY(-3px);
-      background: var(--button-hover);
     }
 
     .contact-link small {
       display: block;
       color: var(--soft);
       font-size: 13px;
-      margin-bottom: 3px;
+      margin-bottom: 4px;
     }
 
     .contact-link strong {
@@ -435,8 +386,8 @@
     }
 
     footer {
-      text-align: center;
       padding: 28px 20px 38px;
+      text-align: center;
       color: var(--soft);
       font-size: 13px;
     }
@@ -449,7 +400,7 @@
       align-items: center;
       justify-content: center;
       padding: 18px;
-      background: rgba(0,0,0,0.32);
+      background: rgba(0,0,0,0.34);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
     }
@@ -462,18 +413,18 @@
       width: min(100%, 520px);
       max-height: 92dvh;
       overflow-y: auto;
-      border-radius: 32px;
-      background: var(--glass-strong);
+      border-radius: 30px;
+      background: var(--surface-strong);
       border: 1px solid var(--border);
-      box-shadow: 0 40px 100px rgba(0,0,0,0.22);
+      box-shadow: 0 40px 100px rgba(0,0,0,0.24);
       padding: 24px;
-      animation: modalIn 0.25s ease both;
+      animation: modalIn 0.24s ease both;
     }
 
     @keyframes modalIn {
       from {
         opacity: 0;
-        transform: translateY(12px) scale(0.98);
+        transform: translateY(10px) scale(0.985);
       }
       to {
         opacity: 1;
@@ -483,35 +434,33 @@
 
     .modal-head {
       display: flex;
-      align-items: flex-start;
       justify-content: space-between;
       gap: 16px;
       margin-bottom: 18px;
+      text-align: left;
     }
 
     .modal-head h3 {
       font-size: 26px;
       letter-spacing: -0.8px;
       line-height: 1.1;
-      color: var(--text);
     }
 
     .modal-head p {
+      margin-top: 7px;
       color: var(--muted);
       font-size: 14px;
-      margin-top: 7px;
       line-height: 1.5;
     }
 
     .close-btn {
       min-width: 38px;
-      width: 38px;
       height: 38px;
       border-radius: 50%;
       border: 1px solid var(--border);
       background: rgba(127,127,127,0.12);
-      cursor: pointer;
       color: var(--text);
+      cursor: pointer;
     }
 
     form {
@@ -531,7 +480,7 @@
     textarea {
       width: 100%;
       border: 1px solid var(--border);
-      background: var(--button);
+      background: var(--surface);
       color: var(--text);
       border-radius: 17px;
       padding: 14px 15px;
@@ -543,7 +492,7 @@
     select:focus,
     textarea:focus {
       border-color: var(--soft);
-      background: var(--glass-strong);
+      background: var(--surface-strong);
     }
 
     textarea {
@@ -564,8 +513,8 @@
     .submit-btn {
       margin-top: 8px;
       border: none;
-      background: var(--invert);
-      color: var(--invert-text);
+      background: var(--accent);
+      color: var(--accent-text);
       border-radius: 999px;
       padding: 15px 20px;
       cursor: pointer;
@@ -586,33 +535,26 @@
     @media (max-width: 760px) {
       nav {
         top: 12px;
-        width: min(95%, 460px);
-        overflow-x: auto;
-        scrollbar-width: none;
+        width: min(94%, 430px);
       }
 
-      nav::-webkit-scrollbar {
-        display: none;
-      }
-
-      nav a,
-      .theme-toggle {
-        flex: 0 0 auto;
-        min-width: 78px;
+      nav a {
         font-size: 13px;
-        padding: 10px 9px;
+        padding: 10px 6px;
       }
 
       .theme-toggle {
-        min-width: 74px;
+        top: auto;
+        right: 16px;
+        bottom: 18px;
       }
 
       section {
-        padding: 105px 16px 56px;
+        padding: 104px 16px 58px;
       }
 
-      .hero-card {
-        padding: 44px 20px;
+      .hero {
+        padding: 46px 20px;
         border-radius: 30px;
       }
 
@@ -634,7 +576,7 @@
         grid-template-columns: 1fr;
       }
 
-      .tile {
+      .card {
         min-height: auto;
       }
 
@@ -643,7 +585,6 @@
       }
 
       .contact-link {
-        align-items: flex-start;
         flex-direction: column;
       }
 
@@ -676,154 +617,100 @@
 
 <body>
   <div class="loader">
-    <div class="loader-ring">
-      <div class="loader-dot"></div>
-    </div>
+    <div class="loader-mark"></div>
   </div>
 
   <div class="background"></div>
 
   <nav>
     <a href="#home">Home</a>
-    <a href="#shopping">Shopping</a>
     <a href="#services">Services</a>
+    <a href="#shopping">Shopping</a>
     <a href="#contact">Contact</a>
-    <button class="theme-toggle" onclick="toggleTheme()" type="button" id="themeButton">Dark</button>
   </nav>
+
+  <button class="theme-toggle" onclick="toggleTheme()" type="button" id="themeButton">Dark</button>
 
   <section id="home">
     <div class="container">
-      <div class="hero-card glass">
-        <div class="tag">
-          <span class="tag-dot"></span>
-          minimal digital hub
-        </div>
-
+      <div class="hero panel">
+        <p class="eyebrow">Digital services & curated picks</p>
         <h1>simpcorp</h1>
-
-        <p class="subtitle">clean services, useful picks, and simple digital work.</p>
+        <p class="subtitle">
+          Minimal websites, useful tools, social media support, and carefully selected recommendations.
+        </p>
 
         <div class="actions">
-          <a class="btn dark-btn" href="#services">View services</a>
-          <a class="btn" href="#shopping">Explore shopping</a>
+          <a class="btn primary" href="#services">View services</a>
+          <a class="btn" href="#contact">Contact</a>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="container">
+      <p class="eyebrow">What I can help with</p>
+      <h2>services</h2>
+
+      <div class="grid">
+        <button class="card service-card" onclick="openService('Website Building')">
+          <span>service</span>
+          <h3>Website Building</h3>
+          <p>Clean one-page websites for creators, students, small businesses, and personal brands.</p>
+        </button>
+
+        <button class="card service-card" onclick="openService('Utility Office Tools')">
+          <span>service</span>
+          <h3>Utility Tools</h3>
+          <p>Small calculators, trackers, office tools, and lightweight software for daily work.</p>
+        </button>
+
+        <button class="card service-card" onclick="openService('Social Media Management')">
+          <span>service</span>
+          <h3>Social Media Management</h3>
+          <p>Page handling, posting support, basic content planning, and account organization.</p>
+        </button>
       </div>
     </div>
   </section>
 
   <section id="shopping">
     <div class="container">
-      <div class="tag">
-        <span class="tag-dot"></span>
-        curated sections
-      </div>
-
+      <p class="eyebrow">Curated categories</p>
       <h2>shopping</h2>
 
       <div class="grid">
-        <a class="tile glass" href="#">
-          <span>category</span>
-          <h3>Electronics</h3>
-          <p>Phones, laptops, audio, accessories, and practical tech picks.</p>
-        </a>
-
-        <a class="tile glass" href="#">
-          <span>category</span>
-          <h3>Fashion</h3>
-          <p>Basics, watches, shoes, and clean everyday style.</p>
-        </a>
-
-        <a class="tile glass" href="#">
-          <span>category</span>
-          <h3>Food</h3>
-          <p>Student-friendly snacks, cafés, and budget food finds.</p>
-        </a>
-
-        <a class="tile glass" href="#">
-          <span>category</span>
-          <h3>Student Deals</h3>
-          <p>Useful products and services without wasting money.</p>
-        </a>
-
-        <a class="tile glass" href="#">
-          <span>category</span>
-          <h3>Apps</h3>
-          <p>Editing, productivity, AI tools, and creator software.</p>
-        </a>
-
-        <a class="tile glass" href="#">
-          <span>category</span>
-          <h3>Minimal Picks</h3>
-          <p>Clean, useful, low-noise products that match the vibe.</p>
-        </a>
+        <a class="card" href="#"><span>category</span><h3>Electronics</h3><p>Phones, laptops, audio, accessories, and practical tech picks.</p></a>
+        <a class="card" href="#"><span>category</span><h3>Fashion</h3><p>Basics, watches, shoes, and clean everyday style.</p></a>
+        <a class="card" href="#"><span>category</span><h3>Food</h3><p>Student-friendly snacks, cafés, and budget food finds.</p></a>
+        <a class="card" href="#"><span>category</span><h3>Student Deals</h3><p>Useful products and services without wasting money.</p></a>
+        <a class="card" href="#"><span>category</span><h3>Apps</h3><p>Editing, productivity, AI tools, and creator software.</p></a>
+        <a class="card" href="#"><span>category</span><h3>Minimal Picks</h3><p>Clean, useful, low-noise products that match the vibe.</p></a>
       </div>
 
       <p class="disclaimer">Some links may later be promotional or affiliate-based.</p>
     </div>
   </section>
 
-  <section id="services">
-    <div class="container">
-      <div class="tag">
-        <span class="tag-dot"></span>
-        available work
-      </div>
-
-      <h2>services</h2>
-
-      <div class="grid">
-        <button class="tile glass service-btn" onclick="openService('Website Building')">
-          <span>service</span>
-          <h3>Build Similar Websites</h3>
-          <p>Minimal one-page websites for people, creators, and small businesses.</p>
-        </button>
-
-        <button class="tile glass service-btn" onclick="openService('Utility Office Tools')">
-          <span>service</span>
-          <h3>Small Utility Tools</h3>
-          <p>Simple office/student tools, calculators, trackers, and lightweight software.</p>
-        </button>
-
-        <button class="tile glass service-btn" onclick="openService('Social Media Management')">
-          <span>service</span>
-          <h3>Manage Social Media</h3>
-          <p>Page handling, posting support, content ideas, and account organization.</p>
-        </button>
-      </div>
-    </div>
-  </section>
-
   <section id="contact">
     <div class="container">
-      <div class="tag">
-        <span class="tag-dot"></span>
-        socials
-      </div>
-
+      <p class="eyebrow">Reach out</p>
       <h2>contact</h2>
 
-      <div class="contact-card glass">
+      <div class="contact-card panel">
         <a class="contact-link" href="https://www.instagram.com/simpcorpone" target="_blank" rel="noopener noreferrer">
-          <div>
-            <small>Instagram</small>
-            <strong>@simpcorpone</strong>
-          </div>
+          <div><small>Instagram</small><strong>@simpcorpone</strong></div>
           <span>open</span>
         </a>
 
         <a class="contact-link" href="https://www.reddit.com/user/hawt_ice" target="_blank" rel="noopener noreferrer">
-          <div>
-            <small>Reddit</small>
-            <strong>u/hawt_ice</strong>
-          </div>
+          <div><small>Reddit</small><strong>u/hawt_ice</strong></div>
           <span>open</span>
         </a>
 
         <a class="contact-link" href="mailto:simpcorp@icloud.com">
-          <div>
-            <small>Email</small>
-            <strong>simpcorp@icloud.com</strong>
-          </div>
+          <div><small>Email</small><strong>simpcorp@icloud.com</strong></div>
           <span>mail</span>
         </a>
       </div>
@@ -875,11 +762,10 @@
           <input id="socialHandle" name="social_media_handle" type="text" placeholder="@username or page link" />
         </div>
 
-        <label for="message">What do you want?</label>
-        <textarea id="message" name="message" placeholder="Describe it shortly..." required></textarea>
+        <label for="message">Requirement</label>
+        <textarea id="message" name="message" placeholder="Describe what you need..." required></textarea>
 
         <button class="submit-btn" type="submit">Send request</button>
-
         <p class="note">Add either email or phone number so I can contact you back.</p>
       </form>
     </div>
@@ -897,11 +783,11 @@
       if (theme === "dark") {
         document.body.classList.add("dark");
         themeButton.textContent = "Light";
-        document.querySelector('meta[name="theme-color"]').setAttribute("content", "#000000");
+        document.querySelector('meta[name="theme-color"]').setAttribute("content", "#090909");
       } else {
         document.body.classList.remove("dark");
         themeButton.textContent = "Dark";
-        document.querySelector('meta[name="theme-color"]').setAttribute("content", "#f5f5f7");
+        document.querySelector('meta[name="theme-color"]').setAttribute("content", "#f7f7f5");
       }
 
       localStorage.setItem("simpcorpTheme", theme);
@@ -949,11 +835,7 @@
     });
 
     var savedTheme = localStorage.getItem("simpcorpTheme");
-    if (savedTheme) {
-      applyTheme(savedTheme);
-    } else {
-      applyTheme("light");
-    }
+    applyTheme(savedTheme || "light");
   </script>
 </body>
 </html>
