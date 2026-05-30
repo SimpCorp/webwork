@@ -4,42 +4,37 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <meta name="theme-color" content="#f7f7f5" />
-  <meta name="description" content="SimpCorp — websites, utility tools, social media management, and curated shopping sections." />
 
   <title>SimpCorp</title>
-  <link rel="icon" type="image/png" href="logoicon.png" />
+  <link rel="icon" type="image/png" href="favicon.png" />
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
       --bg: #f7f7f5;
-      --surface: rgba(255, 255, 255, 0.72);
-      --surface-strong: rgba(255, 255, 255, 0.96);
+      --surface: rgba(255,255,255,0.72);
+      --surface-strong: rgba(255,255,255,0.96);
       --text: #171717;
       --muted: #676767;
       --soft: #8a8a8a;
-      --border: rgba(0, 0, 0, 0.09);
-      --shadow: rgba(0, 0, 0, 0.08);
-      --nav: rgba(255, 255, 255, 0.76);
+      --border: rgba(0,0,0,0.09);
+      --shadow: rgba(0,0,0,0.08);
+      --nav: rgba(255,255,255,0.76);
       --accent: #171717;
       --accent-text: #ffffff;
     }
 
     body.dark {
       --bg: #090909;
-      --surface: rgba(255, 255, 255, 0.055);
-      --surface-strong: rgba(22, 22, 22, 0.96);
+      --surface: rgba(255,255,255,0.055);
+      --surface-strong: rgba(22,22,22,0.96);
       --text: #f5f5f5;
       --muted: #adadad;
       --soft: #7d7d7d;
-      --border: rgba(255, 255, 255, 0.13);
-      --shadow: rgba(0, 0, 0, 0.48);
-      --nav: rgba(18, 18, 18, 0.76);
+      --border: rgba(255,255,255,0.13);
+      --shadow: rgba(0,0,0,0.48);
+      --nav: rgba(18,18,18,0.76);
       --accent: #f5f5f5;
       --accent-text: #090909;
     }
@@ -61,23 +56,14 @@
       transition: background 0.35s ease, color 0.35s ease;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
+    a { color: inherit; text-decoration: none; }
 
-    button,
-    input,
-    select,
-    textarea {
+    button, input, select, textarea {
       font-family: inherit;
       font-size: 16px;
     }
 
-    button,
-    a {
-      -webkit-tap-highlight-color: transparent;
-    }
+    button, a { -webkit-tap-highlight-color: transparent; }
 
     .background {
       position: fixed;
@@ -128,10 +114,7 @@
     }
 
     @keyframes hideLoader {
-      to {
-        opacity: 0;
-        visibility: hidden;
-      }
+      to { opacity: 0; visibility: hidden; }
     }
 
     nav {
@@ -140,7 +123,7 @@
       left: 50%;
       transform: translateX(-50%);
       z-index: 50;
-      width: min(92%, 560px);
+      width: min(94%, 650px);
       padding: 8px;
       border-radius: 999px;
       background: var(--nav);
@@ -207,27 +190,21 @@
     }
 
     @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(14px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(14px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    .panel {
+    .panel, .card {
       background: var(--surface);
       border: 1px solid var(--border);
       backdrop-filter: blur(24px);
       -webkit-backdrop-filter: blur(24px);
       box-shadow: 0 28px 80px var(--shadow);
-      border-radius: 34px;
     }
 
     .hero {
       padding: 68px 36px;
+      border-radius: 34px;
     }
 
     .eyebrow {
@@ -260,7 +237,6 @@
       color: var(--muted);
       font-size: clamp(17px, 2.3vw, 23px);
       line-height: 1.55;
-      letter-spacing: -0.3px;
     }
 
     .actions {
@@ -288,9 +264,7 @@
       border-color: var(--accent);
     }
 
-    .btn:hover {
-      transform: translateY(-3px);
-    }
+    .btn:hover { transform: translateY(-3px); }
 
     .grid {
       margin-top: 36px;
@@ -303,9 +277,6 @@
       min-height: 152px;
       padding: 26px;
       border-radius: 28px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      box-shadow: 0 22px 65px var(--shadow);
       text-align: left;
       transition: 0.25s ease;
     }
@@ -339,9 +310,117 @@
 
     .service-card {
       width: 100%;
-      border: 1px solid var(--border);
       cursor: pointer;
     }
+
+    .sex-card {
+      margin: 36px auto 0;
+      max-width: 860px;
+      padding: 30px;
+      border-radius: 34px;
+      text-align: left;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin: 28px 0;
+    }
+
+    .stat {
+      padding: 18px;
+      border-radius: 22px;
+      background: var(--surface-strong);
+      border: 1px solid var(--border);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 24px;
+      margin-bottom: 6px;
+    }
+
+    .stat small {
+      color: var(--soft);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    form {
+      display: grid;
+      gap: 13px;
+    }
+
+    label {
+      text-align: left;
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: -6px;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      border-radius: 17px;
+      padding: 14px 15px;
+      outline: none;
+      transition: 0.2s ease;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--soft);
+      background: var(--surface-strong);
+    }
+
+    textarea {
+      min-height: 112px;
+      resize: vertical;
+    }
+
+    .phone-row {
+      display: grid;
+      grid-template-columns: 135px 1fr;
+      gap: 10px;
+    }
+
+    .hidden { display: none; }
+
+    .submit-btn {
+      margin-top: 8px;
+      border: none;
+      background: var(--accent);
+      color: var(--accent-text);
+      border-radius: 999px;
+      padding: 15px 20px;
+      cursor: pointer;
+      transition: 0.25s ease;
+    }
+
+    .submit-btn:hover { transform: translateY(-2px); }
+
+    .note {
+      color: var(--soft);
+      font-size: 12px;
+      line-height: 1.5;
+      text-align: center;
+    }
+
+    .joke-result {
+      margin-top: 14px;
+      padding: 15px;
+      border-radius: 18px;
+      background: var(--surface-strong);
+      border: 1px solid var(--border);
+      color: var(--text);
+      text-align: center;
+      display: none;
+    }
+
+    .joke-result.show { display: block; }
 
     .contact-layout {
       margin: 38px auto 0;
@@ -352,21 +431,18 @@
       text-align: left;
     }
 
-    .contact-main,
-    .contact-side {
+    .contact-main, .contact-side {
       padding: 28px;
       border-radius: 30px;
     }
 
-    .contact-main h3,
-    .contact-side h3 {
+    .contact-main h3, .contact-side h3 {
       font-size: 26px;
       letter-spacing: -0.7px;
       margin-bottom: 10px;
     }
 
-    .contact-main p,
-    .contact-side p {
+    .contact-main p, .contact-side p {
       color: var(--muted);
       font-size: 14px;
       line-height: 1.65;
@@ -389,9 +465,7 @@
       transition: 0.25s ease;
     }
 
-    .contact-method:hover {
-      transform: translateY(-3px);
-    }
+    .contact-method:hover { transform: translateY(-3px); }
 
     .icon-box {
       width: 44px;
@@ -433,12 +507,6 @@
       border: 1px solid var(--border);
     }
 
-    .contact-note strong {
-      display: block;
-      font-size: 15px;
-      margin-bottom: 6px;
-    }
-
     .contact-cta {
       margin-top: 24px;
       display: flex;
@@ -473,9 +541,7 @@
       -webkit-backdrop-filter: blur(16px);
     }
 
-    .modal.show {
-      display: flex;
-    }
+    .modal.show { display: flex; }
 
     .modal-box {
       width: min(100%, 520px);
@@ -490,14 +556,8 @@
     }
 
     @keyframes modalIn {
-      from {
-        opacity: 0;
-        transform: translateY(10px) scale(0.985);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
+      from { opacity: 0; transform: translateY(10px) scale(0.985); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
     }
 
     .modal-head {
@@ -531,82 +591,19 @@
       cursor: pointer;
     }
 
-    form {
-      display: grid;
-      gap: 13px;
-    }
-
-    label {
-      text-align: left;
-      color: var(--muted);
-      font-size: 13px;
-      margin-bottom: -6px;
-    }
-
-    input,
-    select,
-    textarea {
-      width: 100%;
-      border: 1px solid var(--border);
-      background: var(--surface);
-      color: var(--text);
-      border-radius: 17px;
-      padding: 14px 15px;
-      outline: none;
-      transition: 0.2s ease;
-    }
-
-    input:focus,
-    select:focus,
-    textarea:focus {
-      border-color: var(--soft);
-      background: var(--surface-strong);
-    }
-
-    textarea {
-      min-height: 112px;
-      resize: vertical;
-    }
-
-    .phone-row {
-      display: grid;
-      grid-template-columns: 135px 1fr;
-      gap: 10px;
-    }
-
-    .hidden {
-      display: none;
-    }
-
-    .submit-btn {
-      margin-top: 8px;
-      border: none;
-      background: var(--accent);
-      color: var(--accent-text);
-      border-radius: 999px;
-      padding: 15px 20px;
-      cursor: pointer;
-      transition: 0.25s ease;
-    }
-
-    .submit-btn:hover {
-      transform: translateY(-2px);
-    }
-
-    .note {
-      color: var(--soft);
-      font-size: 12px;
-      line-height: 1.5;
-      text-align: center;
-    }
-
     @media (max-width: 760px) {
       nav {
         top: 12px;
         width: min(94%, 430px);
+        overflow-x: auto;
+        scrollbar-width: none;
       }
 
+      nav::-webkit-scrollbar { display: none; }
+
       nav a {
+        flex: 0 0 auto;
+        min-width: 76px;
         font-size: 13px;
         padding: 10px 6px;
       }
@@ -617,9 +614,7 @@
         bottom: 18px;
       }
 
-      section {
-        padding: 104px 16px 58px;
-      }
+      section { padding: 104px 16px 58px; }
 
       .hero {
         padding: 46px 20px;
@@ -636,38 +631,23 @@
         letter-spacing: -2px;
       }
 
-      .subtitle {
-        font-size: 17px;
-      }
+      .subtitle { font-size: 17px; }
 
-      .grid {
+      .grid, .stats, .contact-layout {
         grid-template-columns: 1fr;
       }
 
-      .card {
-        min-height: auto;
-      }
+      .card { min-height: auto; }
 
-      .contact-layout {
-        grid-template-columns: 1fr;
-      }
+      .sex-card { padding: 22px; }
 
-      .contact-main,
-      .contact-side {
-        padding: 22px;
-      }
+      .phone-row { grid-template-columns: 1fr; }
 
-      .contact-cta {
-        flex-direction: column;
-      }
+      .contact-main, .contact-side { padding: 22px; }
 
-      .contact-cta .btn {
-        text-align: center;
-      }
+      .contact-cta { flex-direction: column; }
 
-      .phone-row {
-        grid-template-columns: 1fr;
-      }
+      .contact-cta .btn { text-align: center; }
 
       .modal-box {
         border-radius: 26px;
@@ -676,37 +656,28 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
-      *,
-      *::before,
-      *::after {
+      *, *::before, *::after {
         animation-duration: 0.001ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: 0.001ms !important;
         scroll-behavior: auto !important;
       }
 
-      .loader {
-        display: none;
-      }
-
-      .container {
-        animation: none;
-      }
+      .loader { display: none; }
+      .container { animation: none; }
     }
   </style>
 </head>
 
 <body>
-  <div class="loader">
-    <div class="loader-mark"></div>
-  </div>
-
+  <div class="loader"><div class="loader-mark"></div></div>
   <div class="background"></div>
 
   <nav>
     <a href="#home">Home</a>
     <a href="#services">Services</a>
     <a href="#shopping">Shopping</a>
+    <a href="#sexc">SEX.C</a>
     <a href="#contact">Contact</a>
   </nav>
 
@@ -717,10 +688,7 @@
       <div class="hero panel">
         <p class="eyebrow">Digital services & curated picks</p>
         <h1>simpcorp</h1>
-        <p class="subtitle">
-          minimalism and professionalism re-imagined
-        </p>
-
+        <p class="subtitle">Minimal websites, useful tools, social media support, and carefully selected recommendations.</p>
         <div class="actions">
           <a class="btn primary" href="#services">View services</a>
           <a class="btn" href="#contact">Contact</a>
@@ -774,6 +742,59 @@
     </div>
   </section>
 
+  <section id="sexc">
+    <div class="container">
+      <p class="eyebrow">Admissions open</p>
+      <h2>SEX.C</h2>
+      <p class="subtitle">SimpCorp Excellence College — accepting applications from mildly functional humans.</p>
+
+      <div class="sex-card panel">
+        <div class="stats">
+          <div class="stat"><strong>3.7%</strong><small>Acceptance rate</small></div>
+          <div class="stat"><strong>0%</strong><small>Placement rate</small></div>
+          <div class="stat"><strong>2.5m²</strong><small>Campus area</small></div>
+          <div class="stat"><strong>∞</strong><small>Emotional damage</small></div>
+        </div>
+
+        <form id="sexForm">
+          <label for="sexName">Name</label>
+          <input id="sexName" type="text" placeholder="Applicant name" required />
+
+          <label for="sexAge">Age</label>
+          <input id="sexAge" type="number" min="1" max="120" placeholder="Age" required />
+
+          <label for="exist">Why do you exist?</label>
+          <textarea id="exist" placeholder="Keep it short. Admissions is already tired." required></textarea>
+
+          <label for="braincells">How many braincells are currently operational?</label>
+          <select id="braincells" required>
+            <option value="">Choose carefully</option>
+            <option>0</option>
+            <option>1</option>
+            <option>2</option>
+            <option>Borrowed from a friend</option>
+          </select>
+
+          <label for="jobWant">Do you want a job?</label>
+          <select id="jobWant" onchange="jobCheck()" required>
+            <option value="">Select one</option>
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+            <option value="maybe">Maybe</option>
+          </select>
+
+          <div class="joke-result" id="jobJoke">GNG I want a job too 😭</div>
+
+          <label for="reject">Why should SEX.C reject you?</label>
+          <textarea id="reject" placeholder="Be honest. Or don't. We won't read it properly anyway." required></textarea>
+
+          <button class="submit-btn" type="submit">Submit application</button>
+          <div class="joke-result" id="applicationResult">Application received. Our admissions department is pretending to review your submission.</div>
+        </form>
+      </div>
+    </div>
+  </section>
+
   <section id="contact">
     <div class="container">
       <p class="eyebrow">Reach out</p>
@@ -782,10 +803,7 @@
       <div class="contact-layout">
         <div class="contact-main panel">
           <h3>Start a conversation</h3>
-          <p>
-            For websites, utility tools, page management, collaborations, or general enquiries,
-            use the contact options below.
-          </p>
+          <p>For websites, utility tools, page management, collaborations, or general enquiries, use the contact options below.</p>
 
           <div class="contact-methods">
             <a class="contact-method" href="mailto:simpcorp@icloud.com">
@@ -819,16 +837,7 @@
 
         <div class="contact-side panel">
           <h3>Work requests</h3>
-          <p>
-            For service-related work, use the request form from the Services section.
-            It helps keep the details clear and easy to reply to.
-          </p>
-
-          <div class="contact-note">
-            <strong>Preferred details</strong>
-            <p>Name, contact info, service type, and a short requirement description.</p>
-          </div>
-
+          <p>For service-related work, use the request form from the Services section.</p>
           <div class="contact-cta">
             <a class="btn primary" href="#services">Choose a service</a>
             <a class="btn" href="mailto:simpcorp@icloud.com">Email directly</a>
@@ -838,9 +847,7 @@
     </div>
   </section>
 
-  <footer>
-    © 2026 SimpCorp
-  </footer>
+  <footer>© 2026 SimpCorp</footer>
 
   <div class="modal" id="serviceModal">
     <div class="modal-box">
@@ -875,7 +882,7 @@
             <option value="+65">🇸🇬 +65</option>
             <option value="+33">🇫🇷 +33</option>
           </select>
-          <input id="phone" name="phone" type="tel" placeholder="Phone number" />
+          <input id="phone" name="phone" type="tel" placeholder="Phone number" pattern="[0-9]{10}" maxlength="10" inputmode="numeric" oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0,10)" />
         </div>
 
         <div id="socialHandleBox" class="hidden">
@@ -910,7 +917,6 @@
         themeButton.textContent = "Dark";
         document.querySelector('meta[name="theme-color"]').setAttribute("content", "#f7f7f5");
       }
-
       localStorage.setItem("simpcorpTheme", theme);
     }
 
@@ -944,19 +950,32 @@
     }
 
     modal.addEventListener("click", function(event) {
-      if (event.target === modal) {
-        closeService();
-      }
+      if (event.target === modal) closeService();
     });
 
     document.addEventListener("keydown", function(event) {
-      if (event.key === "Escape") {
-        closeService();
-      }
+      if (event.key === "Escape") closeService();
     });
 
-    var savedTheme = localStorage.getItem("simpcorpTheme");
-    applyTheme(savedTheme || "light");
+    function jobCheck() {
+      var jobWant = document.getElementById("jobWant").value;
+      var jobJoke = document.getElementById("jobJoke");
+
+      if (jobWant === "yes") {
+        jobJoke.classList.add("show");
+      } else {
+        jobJoke.classList.remove("show");
+      }
+    }
+
+    document.getElementById("sexForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+      document.getElementById("applicationResult").classList.add("show");
+      this.reset();
+      document.getElementById("jobJoke").classList.remove("show");
+    });
+
+    applyTheme(localStorage.getItem("simpcorpTheme") || "light");
   </script>
 </body>
 </html>
