@@ -23,6 +23,7 @@
       --nav: rgba(255,255,255,0.76);
       --accent: #171717;
       --accent-text: #ffffff;
+      --danger: #b42318;
     }
 
     body.dark {
@@ -37,6 +38,7 @@
       --nav: rgba(18,18,18,0.76);
       --accent: #f5f5f5;
       --accent-text: #090909;
+      --danger: #ff9a9a;
     }
 
     html {
@@ -315,7 +317,7 @@
 
     .sex-card {
       margin: 36px auto 0;
-      max-width: 860px;
+      max-width: 900px;
       padding: 30px;
       border-radius: 34px;
       text-align: left;
@@ -346,6 +348,104 @@
       font-size: 12px;
       text-transform: uppercase;
       letter-spacing: 1px;
+    }
+
+    .staff-title {
+      margin: 34px 0 16px;
+      color: var(--soft);
+      font-size: 13px;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+    }
+
+    .staff-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-bottom: 30px;
+    }
+
+    .staff-card {
+      border: 1px solid var(--border);
+      background: var(--surface-strong);
+      border-radius: 24px;
+      padding: 20px;
+      text-align: left;
+      cursor: pointer;
+      transition: 0.25s ease;
+    }
+
+    .staff-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 55px var(--shadow);
+    }
+
+    .staff-card small {
+      display: block;
+      color: var(--soft);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+
+    .staff-card strong {
+      display: block;
+      font-size: 24px;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+    }
+
+    .staff-card p {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    .profile-block {
+      display: none;
+      margin-top: 18px;
+      border-radius: 24px;
+      padding: 22px;
+      background: var(--surface-strong);
+      border: 1px solid var(--border);
+    }
+
+    .profile-block.show {
+      display: block;
+    }
+
+    .profile-block h3 {
+      font-size: 28px;
+      letter-spacing: -0.8px;
+      margin-bottom: 18px;
+    }
+
+    .profile-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .profile-item {
+      padding: 16px;
+      border-radius: 18px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+    }
+
+    .profile-item small {
+      display: block;
+      color: var(--soft);
+      font-size: 12px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .profile-item p {
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.55;
     }
 
     form {
@@ -421,6 +521,16 @@
     }
 
     .joke-result.show { display: block; }
+
+    .error-text {
+      color: var(--danger);
+      font-size: 13px;
+      display: none;
+    }
+
+    .error-text.show {
+      display: block;
+    }
 
     .contact-layout {
       margin: 38px auto 0;
@@ -499,14 +609,6 @@
       word-break: break-word;
     }
 
-    .contact-note {
-      margin-top: 22px;
-      padding: 18px;
-      border-radius: 22px;
-      background: var(--surface-strong);
-      border: 1px solid var(--border);
-    }
-
     .contact-cta {
       margin-top: 24px;
       display: flex;
@@ -544,7 +646,7 @@
     .modal.show { display: flex; }
 
     .modal-box {
-      width: min(100%, 520px);
+      width: min(100%, 540px);
       max-height: 92dvh;
       overflow-y: auto;
       border-radius: 30px;
@@ -633,7 +735,7 @@
 
       .subtitle { font-size: 17px; }
 
-      .grid, .stats, .contact-layout {
+      .grid, .stats, .contact-layout, .staff-grid {
         grid-template-columns: 1fr;
       }
 
@@ -746,7 +848,7 @@
     <div class="container">
       <p class="eyebrow">Admissions open</p>
       <h2>SEX.C</h2>
-      <p class="subtitle">SimpCorp Excellence College — accepting applications from mildly functional humans. Managed by Rimu & Somie</p>
+      <p class="subtitle">SimpCorp Excellence College — accepting applications from mildly functional humans.</p>
 
       <div class="sex-card panel">
         <div class="stats">
@@ -755,6 +857,56 @@
           <div class="stat"><strong>2.5m²</strong><small>Campus area</small></div>
           <div class="stat"><strong>∞</strong><small>Emotional damage</small></div>
         </div>
+
+        <p class="staff-title">Staff information</p>
+
+        <div class="staff-grid">
+          <button class="staff-card" type="button" onclick="openRimuGate()">
+            <small>Manager 1</small>
+            <strong>Dr. Rimu</strong>
+            <p>Dare you miss the Dr prefix. View classified profile.</p>
+          </button>
+
+          <button class="staff-card" type="button" onclick="openSomieProfile()">
+            <small>Manager 2</small>
+            <strong>Somie</strong>
+            <p>No prefix yet. Does 1 & 2 indicate hierarchy? Who knows...</p>
+          </button>
+        </div>
+
+        <div class="profile-block" id="rimuProfile">
+          <h3>Profile: Dr. Rimu</h3>
+          <div class="profile-list">
+            <div class="profile-item">
+              <small>Memory</small>
+              <p>Claims 2/10, actually 9/10.</p>
+            </div>
+            <div class="profile-item">
+              <small>Ability</small>
+              <p>Ability to turn a simple question into a 2 hour unforgettable conversation — best ever known to mankind.</p>
+            </div>
+            <div class="profile-item">
+              <small>Hidden Talent</small>
+              <p>Making strangers feel like old friends.</p>
+            </div>
+            <div class="profile-item">
+              <small>Weakness</small>
+              <p>EXAM SCHEDULES.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="profile-block" id="somieProfile">
+          <h3>Profile: Somie</h3>
+          <div class="profile-list">
+            <div class="profile-item">
+              <small>Official note</small>
+              <p>Happy he met DR Rimu. Ain’t gon remove the Dr... he needs treatment at a discount.</p>
+            </div>
+          </div>
+        </div>
+
+        <p class="staff-title">Application form</p>
 
         <form id="sexForm">
           <label for="sexName">Name</label>
@@ -899,6 +1051,30 @@
     </div>
   </div>
 
+  <div class="modal" id="rimuGateModal">
+    <div class="modal-box">
+      <div class="modal-head">
+        <div>
+          <h3>Access Dr. Rimu Profile</h3>
+          <p>Answer either one. Slight spelling damage is tolerated.</p>
+        </div>
+        <button class="close-btn" onclick="closeRimuGate()" type="button">×</button>
+      </div>
+
+      <form id="rimuGateForm">
+        <label for="poweredAnswer">Powered by?</label>
+        <input id="poweredAnswer" type="text" placeholder="Answer here" />
+
+        <label for="assamAnswer">What hint revealed Assam?</label>
+        <input id="assamAnswer" type="text" placeholder="Answer here" />
+
+        <p class="error-text" id="rimuError">Access denied. Admissions suspects weak lore knowledge.</p>
+
+        <button class="submit-btn" type="submit">Unlock profile</button>
+      </form>
+    </div>
+  </div>
+
   <script>
     var modal = document.getElementById("serviceModal");
     var modalTitle = document.getElementById("modalTitle");
@@ -906,6 +1082,7 @@
     var socialHandleBox = document.getElementById("socialHandleBox");
     var socialHandle = document.getElementById("socialHandle");
     var themeButton = document.getElementById("themeButton");
+    var rimuGateModal = document.getElementById("rimuGateModal");
 
     function applyTheme(theme) {
       if (theme === "dark") {
@@ -953,8 +1130,60 @@
       if (event.target === modal) closeService();
     });
 
+    function openRimuGate() {
+      document.getElementById("somieProfile").classList.remove("show");
+
+      if (localStorage.getItem("rimuUnlocked") === "yes") {
+        document.getElementById("rimuProfile").classList.add("show");
+        document.getElementById("rimuProfile").scrollIntoView({ behavior: "smooth", block: "center" });
+        return;
+      }
+
+      rimuGateModal.classList.add("show");
+      document.body.style.overflow = "hidden";
+      document.getElementById("rimuError").classList.remove("show");
+    }
+
+    function closeRimuGate() {
+      rimuGateModal.classList.remove("show");
+      document.body.style.overflow = "";
+    }
+
+    function openSomieProfile() {
+      document.getElementById("rimuProfile").classList.remove("show");
+      document.getElementById("somieProfile").classList.add("show");
+      document.getElementById("somieProfile").scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+
+    rimuGateModal.addEventListener("click", function(event) {
+      if (event.target === rimuGateModal) closeRimuGate();
+    });
+
+    document.getElementById("rimuGateForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      var powered = document.getElementById("poweredAnswer").value.toLowerCase().replace(/[^a-z]/g, "");
+      var assam = document.getElementById("assamAnswer").value.toLowerCase().replace(/[^a-z]/g, "");
+
+      var poweredAccepted = powered.includes("baddecision") || powered.includes("baddecisions");
+      var assamAccepted = assam.includes("tea") || assam.includes("chai");
+
+      if (poweredAccepted || assamAccepted) {
+        localStorage.setItem("rimuUnlocked", "yes");
+        closeRimuGate();
+        document.getElementById("rimuProfile").classList.add("show");
+        document.getElementById("rimuProfile").scrollIntoView({ behavior: "smooth", block: "center" });
+        this.reset();
+      } else {
+        document.getElementById("rimuError").classList.add("show");
+      }
+    });
+
     document.addEventListener("keydown", function(event) {
-      if (event.key === "Escape") closeService();
+      if (event.key === "Escape") {
+        closeService();
+        closeRimuGate();
+      }
     });
 
     function jobCheck() {
