@@ -2,811 +2,131 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <meta name="theme-color" content="#f7f7f5" />
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#f7f7f4" />
   <title>SimpCorp</title>
   <link rel="icon" type="image/png" href="favicon.png" />
 
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    :root {
-      --bg: #f7f7f5;
-      --surface: rgba(255,255,255,0.76);
-      --surface-strong: rgba(255,255,255,0.96);
-      --text: #151515;
-      --muted: #626262;
-      --soft: #8b8b8b;
-      --border: rgba(0,0,0,0.09);
-      --shadow: rgba(0,0,0,0.08);
-      --nav: rgba(255,255,255,0.78);
-      --accent: #151515;
-      --accent-text: #ffffff;
-      --danger: #b42318;
-    }
-
-    body.dark {
-      --bg: #080808;
-      --surface: rgba(255,255,255,0.06);
-      --surface-strong: rgba(24,24,24,0.96);
-      --text: #f5f5f5;
-      --muted: #b0b0b0;
-      --soft: #7f7f7f;
-      --border: rgba(255,255,255,0.13);
-      --shadow: rgba(0,0,0,0.5);
-      --nav: rgba(18,18,18,0.78);
-      --accent: #f5f5f5;
-      --accent-text: #080808;
-      --danger: #ff9a9a;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      overflow-x: hidden;
-      -webkit-text-size-adjust: 100%;
-    }
-
-    body {
-      min-height: 100vh;
-      min-height: 100dvh;
-      background: var(--bg);
-      color: var(--text);
-      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Arial, sans-serif;
-      overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
-      transition: background 0.35s ease, color 0.35s ease;
-    }
-
-    a { color: inherit; text-decoration: none; }
-
-    button, input, select, textarea {
-      font-family: inherit;
-      font-size: 16px;
-    }
-
-    button, a { -webkit-tap-highlight-color: transparent; }
-
-    .background {
-      position: fixed;
-      inset: 0;
-      z-index: -1;
-      background:
-        radial-gradient(circle at 18% 16%, rgba(255,255,255,0.9), transparent 30%),
-        radial-gradient(circle at 86% 82%, rgba(224,224,224,0.72), transparent 34%),
-        linear-gradient(180deg, #ffffff, var(--bg));
-      transition: 0.35s ease;
-    }
-
-    body.dark .background {
-      background:
-        radial-gradient(circle at 20% 15%, rgba(255,255,255,0.08), transparent 30%),
-        radial-gradient(circle at 85% 85%, rgba(255,255,255,0.055), transparent 32%),
-        linear-gradient(180deg, #111111, #000000);
-    }
-
-    .loader {
-      position: fixed;
-      inset: 0;
-      z-index: 999;
-      display: grid;
-      place-items: center;
-      background: var(--bg);
-      animation: hideLoader 0.55s ease forwards;
-      animation-delay: 0.9s;
-    }
-
-    .loader-mark {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      border: 1px solid var(--border);
-      background: var(--surface);
-      display: grid;
-      place-items: center;
-      box-shadow: 0 18px 45px var(--shadow);
-    }
-
-    .loader-mark::after {
-      content: "";
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--text);
-    }
-
-    @keyframes hideLoader {
-      to { opacity: 0; visibility: hidden; }
-    }
-
-    nav {
-      position: fixed;
-      top: 18px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 50;
-      width: min(94%, 650px);
-      padding: 8px;
-      border-radius: 999px;
-      background: var(--nav);
-      border: 1px solid var(--border);
-      backdrop-filter: blur(22px);
-      -webkit-backdrop-filter: blur(22px);
-      display: flex;
-      gap: 6px;
-      box-shadow: 0 18px 55px var(--shadow);
-    }
-
-    nav a {
-      flex: 1;
-      text-align: center;
-      padding: 10px 8px;
-      border-radius: 999px;
-      color: var(--muted);
-      font-size: 14px;
-      transition: 0.25s ease;
-    }
-
-    nav a:hover {
-      background: rgba(127,127,127,0.12);
-      color: var(--text);
-    }
-
-    .theme-toggle {
-      position: fixed;
-      top: 18px;
-      right: 22px;
-      z-index: 60;
-      padding: 12px 16px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      background: var(--nav);
-      color: var(--muted);
-      backdrop-filter: blur(22px);
-      -webkit-backdrop-filter: blur(22px);
-      box-shadow: 0 18px 55px var(--shadow);
-      cursor: pointer;
-      transition: 0.25s ease;
-    }
-
-    .theme-toggle:hover {
-      color: var(--text);
-      transform: translateY(-2px);
-    }
-
-    section {
-      min-height: 100vh;
-      min-height: 100dvh;
-      padding: 120px 22px 76px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      scroll-margin-top: 90px;
-    }
-
-    .container {
-      width: min(100%, 1040px);
-      text-align: center;
-      animation: fadeUp 0.75s ease both;
-      animation-delay: 1s;
-    }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(14px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .panel, .card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
-      box-shadow: 0 28px 80px var(--shadow);
-    }
-
-    .hero {
-      padding: 68px 36px;
-      border-radius: 34px;
-    }
-
-    .eyebrow {
-      color: var(--soft);
-      font-size: 13px;
-      letter-spacing: 1.4px;
-      text-transform: uppercase;
-      margin-bottom: 22px;
-    }
-
-    h1 {
-      font-size: clamp(64px, 12vw, 138px);
-      line-height: 1.08;
-      letter-spacing: -6px;
-      padding-bottom: 8px;
-      font-weight: 720;
-    }
-
-    h2 {
-      font-size: clamp(42px, 7vw, 76px);
-      line-height: 1.12;
-      letter-spacing: -3px;
-      padding-bottom: 8px;
-      font-weight: 700;
-    }
-
-    .subtitle {
-      margin: 18px auto 0;
-      max-width: 640px;
-      color: var(--muted);
-      font-size: clamp(17px, 2.3vw, 23px);
-      line-height: 1.55;
-    }
-
-    .actions {
-      margin-top: 34px;
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      border: 1px solid var(--border);
-      background: var(--surface-strong);
-      color: var(--text);
-      padding: 14px 22px;
-      border-radius: 999px;
-      cursor: pointer;
-      transition: 0.25s ease;
-      box-shadow: 0 12px 34px var(--shadow);
-    }
-
-    .btn.primary {
-      background: var(--accent);
-      color: var(--accent-text);
-      border-color: var(--accent);
-    }
-
-    .btn:hover { transform: translateY(-3px); }
-
-    .grid {
-      margin-top: 36px;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-    }
-
-    .card {
-      min-height: 152px;
-      padding: 26px;
-      border-radius: 28px;
-      text-align: left;
-      transition: 0.25s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-      background: var(--surface-strong);
-    }
-
-    .card span {
-      display: block;
-      color: var(--soft);
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 1.2px;
-      margin-bottom: 12px;
-    }
-
-    .card h3 {
-      font-size: 22px;
-      letter-spacing: -0.5px;
-      margin-bottom: 10px;
-      color: var(--text);
-    }
-
-    .card p {
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.6;
-    }
-
-    .service-card {
-      width: 100%;
-      cursor: pointer;
-    }
-
-    .sex-card {
-      margin: 36px auto 0;
-      max-width: 920px;
-      padding: 30px;
-      border-radius: 34px;
-      text-align: left;
-    }
-
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 12px;
-      margin: 28px 0;
-    }
-
-    .stat {
-      padding: 18px;
-      border-radius: 22px;
-      background: var(--surface-strong);
-      border: 1px solid var(--border);
-    }
-
-    .stat strong {
-      display: block;
-      font-size: 24px;
-      margin-bottom: 6px;
-    }
-
-    .stat small {
-      color: var(--soft);
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .staff-title {
-      margin: 34px 0 16px;
-      color: var(--soft);
-      font-size: 13px;
-      letter-spacing: 1.4px;
-      text-transform: uppercase;
-    }
-
-    .staff-grid, .tool-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 14px;
-      margin-bottom: 30px;
-    }
-
-    .staff-card, .tool-card {
-      border: 1px solid var(--border);
-      background: var(--surface-strong);
-      border-radius: 24px;
-      padding: 20px;
-      text-align: left;
-      transition: 0.25s ease;
-    }
-
-    .staff-card {
-      cursor: pointer;
-    }
-
-    .staff-card:hover, .tool-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 20px 55px var(--shadow);
-    }
-
-    .staff-card small, .tool-card small {
-      display: block;
-      color: var(--soft);
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 8px;
-    }
-
-    .staff-card strong, .tool-card strong {
-      display: block;
-      font-size: 24px;
-      letter-spacing: -0.5px;
-      margin-bottom: 8px;
-    }
-
-    .staff-card p, .tool-card p {
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.55;
-    }
-
-    .conversation-box {
-      margin-top: 14px;
-      display: grid;
-      gap: 12px;
-    }
-
-    .conversation-output {
-      display: none;
-      margin-top: 14px;
-      padding: 18px;
-      border-radius: 20px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      text-align: center;
-    }
-
-    .conversation-output.show {
-      display: block;
-    }
-
-    .conversation-output strong {
-      display: block;
-      font-size: 30px;
-      letter-spacing: -1px;
-      margin-bottom: 6px;
-    }
-
-    .conversation-output small {
-      color: var(--muted);
-      line-height: 1.5;
-    }
-
-    .profile-block {
-      display: none;
-      margin-top: 18px;
-      border-radius: 24px;
-      padding: 22px;
-      background: var(--surface-strong);
-      border: 1px solid var(--border);
-    }
-
-    .profile-block.show {
-      display: block;
-    }
-
-    .profile-block h3 {
-      font-size: 28px;
-      letter-spacing: -0.8px;
-      margin-bottom: 18px;
-    }
-
-    .profile-list {
-      display: grid;
-      gap: 12px;
-    }
-
-    .profile-item {
-      padding: 16px;
-      border-radius: 18px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-    }
-
-    .profile-item small {
-      display: block;
-      color: var(--soft);
-      font-size: 12px;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      margin-bottom: 6px;
-    }
-
-    .profile-item p {
-      color: var(--text);
-      font-size: 15px;
-      line-height: 1.55;
-    }
-
-    form {
-      display: grid;
-      gap: 13px;
-    }
-
-    label {
-      text-align: left;
-      color: var(--muted);
-      font-size: 13px;
-      margin-bottom: -6px;
-    }
-
-    input, select, textarea {
-      width: 100%;
-      border: 1px solid var(--border);
-      background: var(--surface);
-      color: var(--text);
-      border-radius: 17px;
-      padding: 14px 15px;
-      outline: none;
-      transition: 0.2s ease;
-    }
-
-    input:focus, select:focus, textarea:focus {
-      border-color: var(--soft);
-      background: var(--surface-strong);
-    }
-
-    textarea {
-      min-height: 112px;
-      resize: vertical;
-    }
-
-    .phone-row {
-      display: grid;
-      grid-template-columns: 135px 1fr;
-      gap: 10px;
-    }
-
-    .hidden { display: none; }
-
-    .submit-btn {
-      margin-top: 8px;
-      border: none;
-      background: var(--accent);
-      color: var(--accent-text);
-      border-radius: 999px;
-      padding: 15px 20px;
-      cursor: pointer;
-      transition: 0.25s ease;
-    }
-
-    .submit-btn:hover { transform: translateY(-2px); }
-
-    .note {
-      color: var(--soft);
-      font-size: 12px;
-      line-height: 1.5;
-      text-align: center;
-    }
-
-    .joke-result {
-      margin-top: 14px;
-      padding: 15px;
-      border-radius: 18px;
-      background: var(--surface-strong);
-      border: 1px solid var(--border);
-      color: var(--text);
-      text-align: center;
-      display: none;
-    }
-
-    .joke-result.show { display: block; }
-
-    .error-text {
-      color: var(--danger);
-      font-size: 13px;
-      display: none;
-    }
-
-    .error-text.show { display: block; }
-
-    .contact-layout {
-      margin: 38px auto 0;
-      max-width: 900px;
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 18px;
-      text-align: left;
-    }
-
-    .contact-main, .contact-side {
-      padding: 28px;
-      border-radius: 30px;
-    }
-
-    .contact-main h3, .contact-side h3 {
-      font-size: 26px;
-      letter-spacing: -0.7px;
-      margin-bottom: 10px;
-    }
-
-    .contact-main p, .contact-side p {
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.65;
-    }
-
-    .contact-methods {
-      margin-top: 24px;
-      display: grid;
-      gap: 12px;
-    }
-
-    .contact-method {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      padding: 16px;
-      border-radius: 22px;
-      background: var(--surface-strong);
-      border: 1px solid var(--border);
-      transition: 0.25s ease;
-    }
-
-    .contact-method:hover { transform: translateY(-3px); }
-
-    .icon-box {
-      width: 44px;
-      height: 44px;
-      min-width: 44px;
-      border-radius: 16px;
-      display: grid;
-      place-items: center;
-      background: var(--accent);
-      color: var(--accent-text);
-    }
-
-    .icon-box svg {
-      width: 21px;
-      height: 21px;
-      stroke-width: 1.9;
-    }
-
-    .method-text small {
-      display: block;
-      color: var(--soft);
-      font-size: 12px;
-      margin-bottom: 3px;
-      text-transform: uppercase;
-      letter-spacing: 0.9px;
-    }
-
-    .method-text strong {
-      font-weight: 520;
-      color: var(--text);
-      word-break: break-word;
-    }
-
-    .contact-cta {
-      margin-top: 24px;
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .disclaimer {
-      margin-top: 22px;
-      color: var(--soft);
-      font-size: 12px;
-      line-height: 1.6;
-    }
-
-    footer {
-      padding: 28px 20px 38px;
-      text-align: center;
-      color: var(--soft);
-      font-size: 13px;
-    }
-
-    .modal {
-      position: fixed;
-      inset: 0;
-      z-index: 100;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 18px;
-      background: rgba(0,0,0,0.34);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-    }
-
-    .modal.show { display: flex; }
-
-    .modal-box {
-      width: min(100%, 540px);
-      max-height: 92dvh;
-      overflow-y: auto;
-      border-radius: 30px;
-      background: var(--surface-strong);
-      border: 1px solid var(--border);
-      box-shadow: 0 40px 100px rgba(0,0,0,0.24);
-      padding: 24px;
-      animation: modalIn 0.24s ease both;
-    }
-
-    @keyframes modalIn {
-      from { opacity: 0; transform: translateY(10px) scale(0.985); }
-      to { opacity: 1; transform: translateY(0) scale(1); }
-    }
-
-    .modal-head {
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
-      margin-bottom: 18px;
-      text-align: left;
-    }
-
-    .modal-head h3 {
-      font-size: 26px;
-      letter-spacing: -0.8px;
-      line-height: 1.1;
-    }
-
-    .modal-head p {
-      margin-top: 7px;
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.5;
-    }
-
-    .close-btn {
-      min-width: 38px;
-      height: 38px;
-      border-radius: 50%;
-      border: 1px solid var(--border);
-      background: rgba(127,127,127,0.12);
-      color: var(--text);
-      cursor: pointer;
-    }
-
-    @media (max-width: 760px) {
-      nav {
-        top: 12px;
-        width: min(94%, 430px);
-        overflow-x: auto;
-        scrollbar-width: none;
-      }
-
-      nav::-webkit-scrollbar { display: none; }
-
-      nav a {
-        flex: 0 0 auto;
-        min-width: 76px;
-        font-size: 13px;
-        padding: 10px 6px;
-      }
-
-      .theme-toggle {
-        top: auto;
-        right: 16px;
-        bottom: 18px;
-      }
-
-      section { padding: 104px 16px 58px; }
-
-      .hero {
-        padding: 46px 20px;
-        border-radius: 30px;
-      }
-
-      h1 {
-        font-size: clamp(58px, 19vw, 88px);
-        letter-spacing: -3px;
-      }
-
-      h2 {
-        font-size: clamp(40px, 13vw, 64px);
-        letter-spacing: -2px;
-      }
-
-      .subtitle { font-size: 17px; }
-
-      .grid, .stats, .contact-layout, .staff-grid, .tool-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .card { min-height: auto; }
-
-      .sex-card { padding: 22px; }
-
-      .phone-row { grid-template-columns: 1fr; }
-
-      .contact-main, .contact-side { padding: 22px; }
-
-      .contact-cta { flex-direction: column; }
-
-      .contact-cta .btn { text-align: center; }
-
-      .modal-box {
-        border-radius: 26px;
-        padding: 20px;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation-duration: 0.001ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.001ms !important;
-        scroll-behavior: auto !important;
-      }
-
-      .loader { display: none; }
-      .container { animation: none; }
-    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    :root{
+      --bg:#f7f7f4;--text:#151515;--muted:#666;--soft:#8a8a8a;
+      --card:#fff;--card2:#f1f1ee;--border:#deded8;--shadow:0 24px 70px rgba(0,0,0,.08);
+      --accent:#151515;--accentText:#fff;
+    }
+    body.dark{
+      --bg:#080808;--text:#f4f4f4;--muted:#aaa;--soft:#777;
+      --card:#151515;--card2:#202020;--border:#2e2e2e;--shadow:0 24px 70px rgba(0,0,0,.45);
+      --accent:#f4f4f4;--accentText:#080808;
+    }
+    html{scroll-behavior:smooth;overflow-x:hidden;-webkit-text-size-adjust:100%}
+    body{
+      min-height:100vh;background:var(--bg);color:var(--text);
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+      overflow-x:hidden;-webkit-font-smoothing:antialiased;transition:.25s ease;
+    }
+    a{text-decoration:none;color:inherit}
+    button,input,select,textarea{font:inherit}
+    button,a{-webkit-tap-highlight-color:transparent}
+    .bg{
+      position:fixed;inset:0;z-index:-1;
+      background:radial-gradient(circle at 20% 10%,rgba(255,255,255,.9),transparent 28%),
+      linear-gradient(180deg,#fff,var(--bg));
+    }
+    body.dark .bg{background:radial-gradient(circle at 20% 10%,rgba(255,255,255,.08),transparent 28%),linear-gradient(180deg,#111,#000)}
+    .loader{position:fixed;inset:0;z-index:999;background:var(--bg);display:grid;place-items:center;animation:hide .45s ease forwards;animation-delay:.7s}
+    .loader div{width:36px;height:36px;border-radius:50%;border:1px solid var(--border);background:var(--card)}
+    @keyframes hide{to{opacity:0;visibility:hidden}}
+    nav{
+      position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:50;
+      width:min(94%,640px);padding:7px;border-radius:999px;background:color-mix(in srgb,var(--card) 88%,transparent);
+      border:1px solid var(--border);display:flex;gap:5px;box-shadow:var(--shadow)
+    }
+    nav a{flex:1;text-align:center;padding:10px 8px;border-radius:999px;color:var(--muted);font-size:14px;transition:.2s}
+    nav a:hover{background:var(--card2);color:var(--text)}
+    .theme{
+      position:fixed;right:18px;bottom:18px;z-index:60;border:1px solid var(--border);
+      background:var(--card);color:var(--muted);border-radius:999px;padding:12px 16px;box-shadow:var(--shadow);cursor:pointer
+    }
+    section{padding:120px 22px 90px}
+    .wrap{width:min(100%,1060px);margin:auto;text-align:center}
+    .hero,.panel,.card,.modal-box{background:var(--card);border:1px solid var(--border);box-shadow:var(--shadow)}
+    .hero{border-radius:34px;padding:70px 34px}
+    .eyebrow{font-size:13px;letter-spacing:1.5px;text-transform:uppercase;color:var(--soft);margin-bottom:20px}
+    h1{font-size:clamp(62px,12vw,136px);line-height:1.08;letter-spacing:-6px;padding-bottom:8px}
+    h2{font-size:clamp(42px,7vw,76px);line-height:1.12;letter-spacing:-3px;padding-bottom:8px}
+    .subtitle{max-width:660px;margin:16px auto 0;color:var(--muted);font-size:clamp(17px,2.2vw,22px);line-height:1.55}
+    .actions{margin-top:32px;display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+    .btn,.submit-btn{
+      border:1px solid var(--border);background:var(--card2);color:var(--text);padding:14px 22px;border-radius:999px;
+      cursor:pointer;transition:.2s;display:inline-block
+    }
+    .btn.primary,.submit-btn{background:var(--accent);color:var(--accentText);border-color:var(--accent)}
+    .btn:hover,.submit-btn:hover,.card:hover,.staff-card:hover,.contact-method:hover{transform:translateY(-3px)}
+    .grid{margin-top:34px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .card{border-radius:26px;padding:25px;text-align:left;transition:.2s;min-height:145px}
+    .card span,.staff-card small,.tool-card small,.method-text small{display:block;color:var(--soft);font-size:12px;text-transform:uppercase;letter-spacing:1.1px;margin-bottom:10px}
+    .card h3,.staff-card strong,.tool-card strong{font-size:22px;letter-spacing:-.4px;margin-bottom:9px;color:var(--text);display:block}
+    .card p,.staff-card p,.tool-card p,.contact-main p,.contact-side p{color:var(--muted);font-size:14px;line-height:1.6}
+    .service-card{width:100%;cursor:pointer;border:1px solid var(--border)}
+    .sex-card{margin:34px auto 0;max-width:940px;border-radius:32px;padding:28px;text-align:left}
+    .stats,.staff-grid,.tool-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:26px 0}
+    .staff-grid,.tool-grid{grid-template-columns:repeat(2,1fr)}
+    .stat,.staff-card,.tool-card,.profile-block,.contact-main,.contact-side,.contact-method{background:var(--card2);border:1px solid var(--border);border-radius:22px}
+    .stat{padding:17px}.stat strong{font-size:24px;display:block}.stat small{color:var(--soft);font-size:12px;text-transform:uppercase;letter-spacing:1px}
+    .staff-title{margin:32px 0 14px;color:var(--soft);font-size:13px;letter-spacing:1.4px;text-transform:uppercase}
+    .staff-card,.tool-card{padding:20px;cursor:pointer;transition:.2s;text-align:left}
+    .profile-block{display:none;margin-top:16px;padding:20px}.profile-block.show{display:block}
+    .profile-block h3{font-size:27px;margin-bottom:16px}
+    .profile-list{display:grid;gap:12px}
+    .profile-item{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:15px}
+    .profile-item small{color:var(--soft);font-size:12px;text-transform:uppercase;letter-spacing:1px;display:block;margin-bottom:6px}
+    .profile-item p{font-size:15px;line-height:1.55}
+    form{display:grid;gap:13px}
+    label{text-align:left;color:var(--muted);font-size:13px;margin-bottom:-5px}
+    input,select,textarea{width:100%;border:1px solid var(--border);background:var(--card);color:var(--text);border-radius:16px;padding:14px;outline:none}
+    input:focus,select:focus,textarea:focus{border-color:var(--soft)}
+    textarea{min-height:108px;resize:vertical}
+    .phone-row{display:grid;grid-template-columns:135px 1fr;gap:10px}
+    .hidden{display:none}
+    .joke-result,.conversation-output{display:none;margin-top:13px;padding:15px;border-radius:18px;background:var(--card);border:1px solid var(--border);text-align:center}
+    .joke-result.show,.conversation-output.show{display:block}
+    .conversation-output strong{display:block;font-size:30px;margin-bottom:5px}
+    .conversation-output small{color:var(--muted)}
+    .error-text{display:none;color:#c0392b;font-size:13px}.error-text.show{display:block}
+    .contact-layout{margin:36px auto 0;max-width:900px;display:grid;grid-template-columns:1.1fr .9fr;gap:18px;text-align:left}
+    .contact-main,.contact-side{padding:26px}
+    .contact-main h3,.contact-side h3{font-size:26px;letter-spacing:-.6px;margin-bottom:10px}
+    .contact-methods{margin-top:22px;display:grid;gap:12px}
+    .contact-method{display:flex;gap:14px;align-items:center;padding:15px;transition:.2s}
+    .icon-box{width:44px;height:44px;min-width:44px;border-radius:15px;background:var(--accent);color:var(--accentText);display:grid;place-items:center}
+    .icon-box svg{width:21px;height:21px;stroke-width:1.9}
+    .method-text strong{word-break:break-word}
+    .contact-cta{margin-top:22px;display:flex;gap:12px;flex-wrap:wrap}
+    .disclaimer{margin-top:22px;color:var(--soft);font-size:12px}
+    footer{text-align:center;color:var(--soft);font-size:13px;padding:30px 20px 40px}
+    .modal{position:fixed;inset:0;z-index:100;display:none;place-items:center;padding:18px;background:rgba(0,0,0,.35)}
+    .modal.show{display:grid}
+    .modal-box{width:min(100%,540px);max-height:92dvh;overflow:auto;border-radius:28px;padding:24px}
+    .modal-head{display:flex;justify-content:space-between;gap:14px;margin-bottom:18px;text-align:left}
+    .modal-head h3{font-size:26px;letter-spacing:-.7px}.modal-head p{margin-top:7px;color:var(--muted);font-size:14px;line-height:1.5}
+    .close-btn{width:38px;min-width:38px;height:38px;border-radius:50%;border:1px solid var(--border);background:var(--card2);color:var(--text);cursor:pointer}
+    @media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}.stats{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:680px){
+      nav{top:10px;width:min(95%,430px);overflow-x:auto;scrollbar-width:none}nav::-webkit-scrollbar{display:none}
+      nav a{flex:0 0 auto;min-width:76px;font-size:13px;padding:10px 7px}
+      section{padding:96px 16px 62px}.hero{padding:44px 20px;border-radius:28px}
+      h1{font-size:clamp(58px,19vw,88px);letter-spacing:-3px}h2{font-size:clamp(40px,13vw,64px);letter-spacing:-2px}
+      .grid,.stats,.staff-grid,.tool-grid,.contact-layout,.phone-row{grid-template-columns:1fr}
+      .sex-card{padding:20px}.contact-main,.contact-side{padding:20px}.contact-cta{flex-direction:column}.contact-cta .btn{text-align:center}
+    }
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.loader{display:none}}
   </style>
 </head>
 
 <body>
-  <div class="loader"><div class="loader-mark"></div></div>
-  <div class="background"></div>
+  <div class="loader"><div></div></div>
+  <div class="bg"></div>
 
   <nav>
     <a href="#home">Home</a>
@@ -816,11 +136,11 @@
     <a href="#contact">Contact</a>
   </nav>
 
-  <button class="theme-toggle" onclick="toggleTheme()" type="button" id="themeButton">Dark</button>
+  <button class="theme" onclick="toggleTheme()" id="themeButton" type="button">Dark</button>
 
   <section id="home">
-    <div class="container">
-      <div class="hero panel">
+    <div class="wrap">
+      <div class="hero">
         <p class="eyebrow">Digital services & curated picks</p>
         <h1>simpcorp</h1>
         <p class="subtitle">Minimal websites, useful tools, social media support, and carefully selected recommendations.</p>
@@ -833,37 +153,21 @@
   </section>
 
   <section id="services">
-    <div class="container">
+    <div class="wrap">
       <p class="eyebrow">What I can help with</p>
       <h2>services</h2>
-
       <div class="grid">
-        <button class="card service-card" onclick="openService('Website Building')">
-          <span>service</span>
-          <h3>Website Building</h3>
-          <p>Clean one-page websites for creators, students, small businesses, and personal brands.</p>
-        </button>
-
-        <button class="card service-card" onclick="openService('Utility Office Tools')">
-          <span>service</span>
-          <h3>Utility Tools</h3>
-          <p>Small calculators, trackers, office tools, and lightweight software for daily work.</p>
-        </button>
-
-        <button class="card service-card" onclick="openService('Social Media Management')">
-          <span>service</span>
-          <h3>Social Media Management</h3>
-          <p>Page handling, posting support, basic content planning, and account organization.</p>
-        </button>
+        <button class="card service-card" onclick="openService('Website Building')"><span>service</span><h3>Website Building</h3><p>Clean one-page websites for creators, students, small businesses, and personal brands.</p></button>
+        <button class="card service-card" onclick="openService('Utility Office Tools')"><span>service</span><h3>Utility Tools</h3><p>Small calculators, trackers, office tools, and lightweight software for daily work.</p></button>
+        <button class="card service-card" onclick="openService('Social Media Management')"><span>service</span><h3>Social Media Management</h3><p>Page handling, posting support, basic content planning, and account organization.</p></button>
       </div>
     </div>
   </section>
 
   <section id="shopping">
-    <div class="container">
+    <div class="wrap">
       <p class="eyebrow">Curated categories</p>
       <h2>shopping</h2>
-
       <div class="grid">
         <a class="card" href="#"><span>category</span><h3>Electronics</h3><p>Phones, laptops, audio, accessories, and practical tech picks.</p></a>
         <a class="card" href="#"><span>category</span><h3>Fashion</h3><p>Basics, watches, shoes, and clean everyday style.</p></a>
@@ -872,13 +176,12 @@
         <a class="card" href="#"><span>category</span><h3>Apps</h3><p>Editing, productivity, AI tools, and creator software.</p></a>
         <a class="card" href="#"><span>category</span><h3>Minimal Picks</h3><p>Clean, useful, low-noise products that match the vibe.</p></a>
       </div>
-
       <p class="disclaimer">Some links may later be promotional or affiliate-based.</p>
     </div>
   </section>
 
   <section id="sexc">
-    <div class="container">
+    <div class="wrap">
       <p class="eyebrow">Admissions open</p>
       <h2>SEX.C</h2>
       <p class="subtitle">SimpCorp Excellence College — accepting applications from mildly functional humans.</p>
@@ -892,19 +195,9 @@
         </div>
 
         <p class="staff-title">Staff information</p>
-
         <div class="staff-grid">
-          <button class="staff-card" type="button" onclick="openRimuGate()">
-            <small>Manager 1</small>
-            <strong>Dr. Rimu</strong>
-            <p>Dare you miss the Dr prefix. View classified profile.</p>
-          </button>
-
-          <button class="staff-card" type="button" onclick="openSomieProfile()">
-            <small>Manager 2</small>
-            <strong>Somie</strong>
-            <p>No prefix yet. Does 1 & 2 indicate hierarchy? Who knows...</p>
-          </button>
+          <button class="staff-card" type="button" onclick="openRimuGate()"><small>Manager 1</small><strong>Dr. Rimu</strong><p>Dare you miss the Dr prefix. View classified profile.</p></button>
+          <button class="staff-card" type="button" onclick="openSomieProfile()"><small>Manager 2</small><strong>Somie</strong><p>No prefix yet. Does 1 & 2 indicate hierarchy? Who knows...</p></button>
         </div>
 
         <div class="profile-block" id="rimuProfile">
@@ -920,40 +213,33 @@
         <div class="profile-block" id="somieProfile">
           <h3>Profile: Somie</h3>
           <div class="profile-list">
-            <div class="profile-item">
-              <small>Official note</small>
-              <p>Happy he met DR Rimu. Ain’t gon remove the Dr... he needs treatment at a discount.</p>
-            </div>
+            <div class="profile-item"><small>Official note</small><p>Happy he met DR Rimu. Ain’t gon remove the Dr... he needs treatment at a discount.</p></div>
           </div>
         </div>
 
         <p class="staff-title">Conversation duration estimator</p>
-
         <div class="tool-grid">
           <div class="tool-card">
             <small>Dr. Rimu Research Lab</small>
             <strong>How long will it last?</strong>
-            <p>Enter any random topic. The system will estimate the minimum unavoidable conversation damage.</p>
-
+            <p>Enter any random topic. The system will calculate conversational damage.</p>
             <div class="conversation-box">
-              <input id="conversationInput" type="text" placeholder="Example: exams, tea, Assam, life, bad decisions..." />
+              <input id="conversationInput" type="text" placeholder="Example: exams, tea, Assam, life..." />
               <button class="submit-btn" type="button" onclick="estimateConversation()">Estimate duration</button>
               <div class="conversation-output" id="conversationOutput">
-                <strong id="conversationTime">2 hours</strong>
-                <small id="conversationNote">Conversation classified as emotionally extended.</small>
+                <strong id="conversationTime">classified</strong>
+                <small id="conversationNote">Conversation risk detected.</small>
               </div>
             </div>
           </div>
-
           <div class="tool-card">
-            <small>Warning</small>
-            <strong>Minimum duration: 2 hours</strong>
-            <p>Maximum recorded estimate has been capped at 24 hours for public safety and device battery health.</p>
+            <small>Official warning</small>
+            <strong>Simple questions are not safe</strong>
+            <p>The department recommends tea, patience, and a fully charged phone before starting any conversation.</p>
           </div>
         </div>
 
         <p class="staff-title">Application form</p>
-
         <form id="sexForm">
           <label for="sexName">Name</label>
           <input id="sexName" type="text" placeholder="Applicant name" required />
@@ -967,18 +253,12 @@
           <label for="braincells">How many braincells are currently operational?</label>
           <select id="braincells" required>
             <option value="">Choose carefully</option>
-            <option>0</option>
-            <option>1</option>
-            <option>2</option>
-            <option>Borrowed from a friend</option>
+            <option>0</option><option>1</option><option>2</option><option>Borrowed from a friend</option>
           </select>
 
           <label for="jobWant">Do you want a job?</label>
           <select id="jobWant" onchange="jobCheck()" required>
-            <option value="">Select one</option>
-            <option value="yes">Yes</option>
-            <option value="no">No</option>
-            <option value="maybe">Maybe</option>
+            <option value="">Select one</option><option value="yes">Yes</option><option value="no">No</option><option value="maybe">Maybe</option>
           </select>
 
           <div class="joke-result" id="jobJoke">GNG I want a job too 😭</div>
@@ -994,45 +274,24 @@
   </section>
 
   <section id="contact">
-    <div class="container">
+    <div class="wrap">
       <p class="eyebrow">Reach out</p>
       <h2>contact</h2>
-
       <div class="contact-layout">
         <div class="contact-main panel">
           <h3>Start a conversation</h3>
           <p>For websites, utility tools, page management, collaborations, or general enquiries, use the contact options below.</p>
-
           <div class="contact-methods">
             <a class="contact-method" href="mailto:simpcorp@icloud.com">
-              <div class="icon-box">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                  <rect x="3" y="5" width="18" height="14" rx="2"></rect>
-                  <path d="M3 7l9 6 9-6"></path>
-                </svg>
-              </div>
-              <div class="method-text">
-                <small>Email</small>
-                <strong>simpcorp@icloud.com</strong>
-              </div>
+              <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg></div>
+              <div class="method-text"><small>Email</small><strong>simpcorp@icloud.com</strong></div>
             </a>
-
             <a class="contact-method" href="https://www.instagram.com/simpcorpone" target="_blank" rel="noopener noreferrer">
-              <div class="icon-box">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                  <rect x="3" y="3" width="18" height="18" rx="5"></rect>
-                  <circle cx="12" cy="12" r="4"></circle>
-                  <circle cx="17.5" cy="6.5" r="1"></circle>
-                </svg>
-              </div>
-              <div class="method-text">
-                <small>Instagram</small>
-                <strong>@simpcorpone</strong>
-              </div>
+              <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1"></circle></svg></div>
+              <div class="method-text"><small>Instagram</small><strong>@simpcorpone</strong></div>
             </a>
           </div>
         </div>
-
         <div class="contact-side panel">
           <h3>Work requests</h3>
           <p>For service-related work, use the request form from the Services section.</p>
@@ -1050,47 +309,28 @@
   <div class="modal" id="serviceModal">
     <div class="modal-box">
       <div class="modal-head">
-        <div>
-          <h3 id="modalTitle">Service request</h3>
-          <p>Enter the details. I’ll receive it directly by email.</p>
-        </div>
+        <div><h3 id="modalTitle">Service request</h3><p>Enter the details. I’ll receive it directly by email.</p></div>
         <button class="close-btn" onclick="closeService()" type="button">×</button>
       </div>
-
       <form action="https://formspree.io/f/xqenlvqd" method="POST">
         <input type="hidden" name="selected_service" id="selectedService" />
-
-        <label for="name">Name</label>
-        <input id="name" name="name" type="text" placeholder="Your name" required />
-
-        <label for="email">Email</label>
-        <input id="email" name="email" type="email" placeholder="your@email.com" />
-
+        <label for="name">Name</label><input id="name" name="name" type="text" placeholder="Your name" required />
+        <label for="email">Email</label><input id="email" name="email" type="email" placeholder="your@email.com" />
         <label for="phone">Phone number</label>
         <div class="phone-row">
           <select id="countryCode" name="country_code">
-            <option value="+91">🇮🇳 +91</option>
-            <option value="+1">🇺🇸 +1</option>
-            <option value="+44">🇬🇧 +44</option>
-            <option value="+971">🇦🇪 +971</option>
-            <option value="+49">🇩🇪 +49</option>
-            <option value="+61">🇦🇺 +61</option>
-            <option value="+81">🇯🇵 +81</option>
-            <option value="+82">🇰🇷 +82</option>
-            <option value="+65">🇸🇬 +65</option>
-            <option value="+33">🇫🇷 +33</option>
+            <option value="+91">🇮🇳 +91</option><option value="+1">🇺🇸 +1</option><option value="+44">🇬🇧 +44</option>
+            <option value="+971">🇦🇪 +971</option><option value="+49">🇩🇪 +49</option><option value="+61">🇦🇺 +61</option>
+            <option value="+81">🇯🇵 +81</option><option value="+82">🇰🇷 +82</option><option value="+65">🇸🇬 +65</option><option value="+33">🇫🇷 +33</option>
           </select>
-          <input id="phone" name="phone" type="tel" placeholder="Phone number" pattern="[0-9]{10}" maxlength="10" inputmode="numeric" oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0,10)" />
+          <input id="phone" name="phone" type="tel" placeholder="Phone number" pattern="[0-9]{10}" maxlength="10" inputmode="numeric" oninput="this.value=this.value.replace(/[^0-9]/g,'').slice(0,10)" />
         </div>
-
         <div id="socialHandleBox" class="hidden">
           <label for="socialHandle">Social media handle</label>
           <input id="socialHandle" name="social_media_handle" type="text" placeholder="@username or page link" />
         </div>
-
         <label for="message">Requirement</label>
         <textarea id="message" name="message" placeholder="Describe what you need..." required></textarea>
-
         <button class="submit-btn" type="submit">Send request</button>
         <p class="note">Add either email or phone number so I can contact you back.</p>
       </form>
@@ -1100,181 +340,68 @@
   <div class="modal" id="rimuGateModal">
     <div class="modal-box">
       <div class="modal-head">
-        <div>
-          <h3>Access Dr. Rimu Profile</h3>
-          <p>Answer either one. Slight spelling damage is tolerated.</p>
-        </div>
+        <div><h3>Access Dr. Rimu Profile</h3><p>Answer either one. Slight spelling damage is tolerated.</p></div>
         <button class="close-btn" onclick="closeRimuGate()" type="button">×</button>
       </div>
-
       <form id="rimuGateForm">
         <label for="poweredAnswer">Powered by?</label>
         <input id="poweredAnswer" type="text" placeholder="Answer here" />
-
         <label for="assamAnswer">What hint revealed Assam?</label>
         <input id="assamAnswer" type="text" placeholder="Answer here" />
-
         <p class="error-text" id="rimuError">Access denied. Admissions suspects weak lore knowledge.</p>
-
         <button class="submit-btn" type="submit">Unlock profile</button>
       </form>
     </div>
   </div>
 
   <script>
-    var modal = document.getElementById("serviceModal");
-    var modalTitle = document.getElementById("modalTitle");
-    var selectedService = document.getElementById("selectedService");
-    var socialHandleBox = document.getElementById("socialHandleBox");
-    var socialHandle = document.getElementById("socialHandle");
-    var themeButton = document.getElementById("themeButton");
-    var rimuGateModal = document.getElementById("rimuGateModal");
+    var modal=document.getElementById("serviceModal"),modalTitle=document.getElementById("modalTitle"),selectedService=document.getElementById("selectedService"),socialHandleBox=document.getElementById("socialHandleBox"),socialHandle=document.getElementById("socialHandle"),themeButton=document.getElementById("themeButton"),rimuGateModal=document.getElementById("rimuGateModal");
 
-    function applyTheme(theme) {
-      if (theme === "dark") {
-        document.body.classList.add("dark");
-        themeButton.textContent = "Light";
-        document.querySelector('meta[name="theme-color"]').setAttribute("content", "#080808");
-      } else {
-        document.body.classList.remove("dark");
-        themeButton.textContent = "Dark";
-        document.querySelector('meta[name="theme-color"]').setAttribute("content", "#f7f7f5");
-      }
-      localStorage.setItem("simpcorpTheme", theme);
+    function applyTheme(theme){
+      if(theme==="dark"){document.body.classList.add("dark");themeButton.textContent="Light";document.querySelector('meta[name="theme-color"]').setAttribute("content","#080808")}
+      else{document.body.classList.remove("dark");themeButton.textContent="Dark";document.querySelector('meta[name="theme-color"]').setAttribute("content","#f7f7f4")}
+      localStorage.setItem("simpcorpTheme",theme)
     }
-
-    function toggleTheme() {
-      if (document.body.classList.contains("dark")) {
-        applyTheme("light");
-      } else {
-        applyTheme("dark");
-      }
+    function toggleTheme(){applyTheme(document.body.classList.contains("dark")?"light":"dark")}
+    function openService(serviceName){
+      selectedService.value=serviceName;modalTitle.textContent=serviceName;modal.classList.add("show");document.body.style.overflow="hidden";
+      if(serviceName==="Social Media Management"){socialHandleBox.classList.remove("hidden");socialHandle.required=true}
+      else{socialHandleBox.classList.add("hidden");socialHandle.required=false;socialHandle.value=""}
     }
+    function closeService(){modal.classList.remove("show");document.body.style.overflow=""}
+    modal.addEventListener("click",function(e){if(e.target===modal)closeService()});
 
-    function openService(serviceName) {
-      selectedService.value = serviceName;
-      modalTitle.textContent = serviceName;
-      modal.classList.add("show");
-      document.body.style.overflow = "hidden";
-
-      if (serviceName === "Social Media Management") {
-        socialHandleBox.classList.remove("hidden");
-        socialHandle.required = true;
-      } else {
-        socialHandleBox.classList.add("hidden");
-        socialHandle.required = false;
-        socialHandle.value = "";
-      }
-    }
-
-    function closeService() {
-      modal.classList.remove("show");
-      document.body.style.overflow = "";
-    }
-
-    modal.addEventListener("click", function(event) {
-      if (event.target === modal) closeService();
-    });
-
-    function openRimuGate() {
+    function openRimuGate(){
       document.getElementById("somieProfile").classList.remove("show");
-
-      if (localStorage.getItem("rimuUnlocked") === "yes") {
-        document.getElementById("rimuProfile").classList.add("show");
-        document.getElementById("rimuProfile").scrollIntoView({ behavior: "smooth", block: "center" });
-        return;
-      }
-
-      rimuGateModal.classList.add("show");
-      document.body.style.overflow = "hidden";
-      document.getElementById("rimuError").classList.remove("show");
+      if(localStorage.getItem("rimuUnlocked")==="yes"){document.getElementById("rimuProfile").classList.add("show");document.getElementById("rimuProfile").scrollIntoView({behavior:"smooth",block:"center"});return}
+      rimuGateModal.classList.add("show");document.body.style.overflow="hidden";document.getElementById("rimuError").classList.remove("show")
     }
-
-    function closeRimuGate() {
-      rimuGateModal.classList.remove("show");
-      document.body.style.overflow = "";
-    }
-
-    function openSomieProfile() {
-      document.getElementById("rimuProfile").classList.remove("show");
-      document.getElementById("somieProfile").classList.add("show");
-      document.getElementById("somieProfile").scrollIntoView({ behavior: "smooth", block: "center" });
-    }
-
-    rimuGateModal.addEventListener("click", function(event) {
-      if (event.target === rimuGateModal) closeRimuGate();
+    function closeRimuGate(){rimuGateModal.classList.remove("show");document.body.style.overflow=""}
+    function openSomieProfile(){document.getElementById("rimuProfile").classList.remove("show");document.getElementById("somieProfile").classList.add("show");document.getElementById("somieProfile").scrollIntoView({behavior:"smooth",block:"center"})}
+    rimuGateModal.addEventListener("click",function(e){if(e.target===rimuGateModal)closeRimuGate()});
+    document.getElementById("rimuGateForm").addEventListener("submit",function(e){
+      e.preventDefault();
+      var powered=document.getElementById("poweredAnswer").value.toLowerCase().replace(/[^a-z]/g,"");
+      var assam=document.getElementById("assamAnswer").value.toLowerCase().replace(/[^a-z]/g,"");
+      if(powered.includes("baddecision")||powered.includes("baddecisions")||assam.includes("tea")||assam.includes("chai")){
+        localStorage.setItem("rimuUnlocked","yes");closeRimuGate();document.getElementById("rimuProfile").classList.add("show");document.getElementById("rimuProfile").scrollIntoView({behavior:"smooth",block:"center"});this.reset()
+      }else document.getElementById("rimuError").classList.add("show")
     });
 
-    document.getElementById("rimuGateForm").addEventListener("submit", function(event) {
-      event.preventDefault();
+    document.addEventListener("keydown",function(e){if(e.key==="Escape"){closeService();closeRimuGate()}});
 
-      var powered = document.getElementById("poweredAnswer").value.toLowerCase().replace(/[^a-z]/g, "");
-      var assam = document.getElementById("assamAnswer").value.toLowerCase().replace(/[^a-z]/g, "");
+    function jobCheck(){document.getElementById("jobJoke").classList.toggle("show",document.getElementById("jobWant").value==="yes")}
 
-      var poweredAccepted = powered.includes("baddecision") || powered.includes("baddecisions");
-      var assamAccepted = assam.includes("tea") || assam.includes("chai");
-
-      if (poweredAccepted || assamAccepted) {
-        localStorage.setItem("rimuUnlocked", "yes");
-        closeRimuGate();
-        document.getElementById("rimuProfile").classList.add("show");
-        document.getElementById("rimuProfile").scrollIntoView({ behavior: "smooth", block: "center" });
-        this.reset();
-      } else {
-        document.getElementById("rimuError").classList.add("show");
-      }
-    });
-
-    document.addEventListener("keydown", function(event) {
-      if (event.key === "Escape") {
-        closeService();
-        closeRimuGate();
-      }
-    });
-
-    function jobCheck() {
-      var jobWant = document.getElementById("jobWant").value;
-      var jobJoke = document.getElementById("jobJoke");
-
-      if (jobWant === "yes") {
-        jobJoke.classList.add("show");
-      } else {
-        jobJoke.classList.remove("show");
-      }
+    function estimateConversation(){
+      var input=document.getElementById("conversationInput").value.trim();
+      var output=document.getElementById("conversationOutput"),time=document.getElementById("conversationTime"),note=document.getElementById("conversationNote");
+      var seed=input.length||1,random=Math.floor(Math.random()*23),hours=Math.min(24,Math.max(2,2+((seed+random)%23)));
+      var notes=["Simple question detected. Timeline unstable.","High lore probability. Hydration recommended.","Tea-level intelligence detected.","Bad decisions found in input.","Conversation risk upgraded by admissions.","Battery percentage may not survive this."];
+      time.textContent=hours+" hours";note.textContent=notes[Math.floor(Math.random()*notes.length)];output.classList.add("show")
     }
 
-    function estimateConversation() {
-      var input = document.getElementById("conversationInput").value.trim();
-      var output = document.getElementById("conversationOutput");
-      var time = document.getElementById("conversationTime");
-      var note = document.getElementById("conversationNote");
-
-      var base = input.length || 1;
-      var randomBoost = Math.floor(Math.random() * 23);
-      var hours = Math.min(24, Math.max(2, 2 + ((base + randomBoost) % 23)));
-
-      var notes = [
-        "Conversation classified as emotionally extended.",
-        "Simple question detected. Two-hour minimum activated.",
-        "High lore probability. Hydration recommended.",
-        "Tea-level intelligence detected. Duration increased.",
-        "Exam schedule risk low, conversation risk extreme.",
-        "Bad decisions found in input. Timeline expanded."
-      ];
-
-      time.textContent = hours + (hours === 1 ? " hour" : " hours");
-      note.textContent = notes[Math.floor(Math.random() * notes.length)];
-      output.classList.add("show");
-    }
-
-    document.getElementById("sexForm").addEventListener("submit", function(event) {
-      event.preventDefault();
-      document.getElementById("applicationResult").classList.add("show");
-      this.reset();
-      document.getElementById("jobJoke").classList.remove("show");
-    });
-
-    applyTheme(localStorage.getItem("simpcorpTheme") || "light");
+    document.getElementById("sexForm").addEventListener("submit",function(e){e.preventDefault();document.getElementById("applicationResult").classList.add("show");this.reset();document.getElementById("jobJoke").classList.remove("show")});
+    applyTheme(localStorage.getItem("simpcorpTheme")||"light");
   </script>
 </body>
 </html>
