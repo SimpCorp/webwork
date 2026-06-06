@@ -13,31 +13,31 @@
 
     :root {
       --bg: #f7f7f5;
-      --surface: rgba(255,255,255,0.72);
+      --surface: rgba(255,255,255,0.76);
       --surface-strong: rgba(255,255,255,0.96);
-      --text: #171717;
-      --muted: #676767;
-      --soft: #8a8a8a;
+      --text: #151515;
+      --muted: #626262;
+      --soft: #8b8b8b;
       --border: rgba(0,0,0,0.09);
       --shadow: rgba(0,0,0,0.08);
-      --nav: rgba(255,255,255,0.76);
-      --accent: #171717;
+      --nav: rgba(255,255,255,0.78);
+      --accent: #151515;
       --accent-text: #ffffff;
       --danger: #b42318;
     }
 
     body.dark {
-      --bg: #090909;
-      --surface: rgba(255,255,255,0.055);
-      --surface-strong: rgba(22,22,22,0.96);
+      --bg: #080808;
+      --surface: rgba(255,255,255,0.06);
+      --surface-strong: rgba(24,24,24,0.96);
       --text: #f5f5f5;
-      --muted: #adadad;
-      --soft: #7d7d7d;
+      --muted: #b0b0b0;
+      --soft: #7f7f7f;
       --border: rgba(255,255,255,0.13);
-      --shadow: rgba(0,0,0,0.48);
-      --nav: rgba(18,18,18,0.76);
+      --shadow: rgba(0,0,0,0.5);
+      --nav: rgba(18,18,18,0.78);
       --accent: #f5f5f5;
-      --accent-text: #090909;
+      --accent-text: #080808;
       --danger: #ff9a9a;
     }
 
@@ -72,8 +72,8 @@
       inset: 0;
       z-index: -1;
       background:
-        radial-gradient(circle at 20% 15%, rgba(255,255,255,0.9), transparent 30%),
-        radial-gradient(circle at 85% 85%, rgba(220,220,220,0.7), transparent 32%),
+        radial-gradient(circle at 18% 16%, rgba(255,255,255,0.9), transparent 30%),
+        radial-gradient(circle at 86% 82%, rgba(224,224,224,0.72), transparent 34%),
         linear-gradient(180deg, #ffffff, var(--bg));
       transition: 0.35s ease;
     }
@@ -81,8 +81,8 @@
     body.dark .background {
       background:
         radial-gradient(circle at 20% 15%, rgba(255,255,255,0.08), transparent 30%),
-        radial-gradient(circle at 85% 85%, rgba(255,255,255,0.05), transparent 32%),
-        linear-gradient(180deg, #101010, #000000);
+        radial-gradient(circle at 85% 85%, rgba(255,255,255,0.055), transparent 32%),
+        linear-gradient(180deg, #111111, #000000);
     }
 
     .loader {
@@ -93,7 +93,7 @@
       place-items: center;
       background: var(--bg);
       animation: hideLoader 0.55s ease forwards;
-      animation-delay: 1s;
+      animation-delay: 0.9s;
     }
 
     .loader-mark {
@@ -188,7 +188,7 @@
       width: min(100%, 1040px);
       text-align: center;
       animation: fadeUp 0.75s ease both;
-      animation-delay: 1.1s;
+      animation-delay: 1s;
     }
 
     @keyframes fadeUp {
@@ -317,7 +317,7 @@
 
     .sex-card {
       margin: 36px auto 0;
-      max-width: 900px;
+      max-width: 920px;
       padding: 30px;
       border-radius: 34px;
       text-align: left;
@@ -358,29 +358,32 @@
       text-transform: uppercase;
     }
 
-    .staff-grid {
+    .staff-grid, .tool-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 14px;
       margin-bottom: 30px;
     }
 
-    .staff-card {
+    .staff-card, .tool-card {
       border: 1px solid var(--border);
       background: var(--surface-strong);
       border-radius: 24px;
       padding: 20px;
       text-align: left;
-      cursor: pointer;
       transition: 0.25s ease;
     }
 
-    .staff-card:hover {
+    .staff-card {
+      cursor: pointer;
+    }
+
+    .staff-card:hover, .tool-card:hover {
       transform: translateY(-4px);
       box-shadow: 0 20px 55px var(--shadow);
     }
 
-    .staff-card small {
+    .staff-card small, .tool-card small {
       display: block;
       color: var(--soft);
       font-size: 12px;
@@ -389,17 +392,49 @@
       margin-bottom: 8px;
     }
 
-    .staff-card strong {
+    .staff-card strong, .tool-card strong {
       display: block;
       font-size: 24px;
       letter-spacing: -0.5px;
       margin-bottom: 8px;
     }
 
-    .staff-card p {
+    .staff-card p, .tool-card p {
       color: var(--muted);
       font-size: 14px;
       line-height: 1.55;
+    }
+
+    .conversation-box {
+      margin-top: 14px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .conversation-output {
+      display: none;
+      margin-top: 14px;
+      padding: 18px;
+      border-radius: 20px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .conversation-output.show {
+      display: block;
+    }
+
+    .conversation-output strong {
+      display: block;
+      font-size: 30px;
+      letter-spacing: -1px;
+      margin-bottom: 6px;
+    }
+
+    .conversation-output small {
+      color: var(--muted);
+      line-height: 1.5;
     }
 
     .profile-block {
@@ -528,9 +563,7 @@
       display: none;
     }
 
-    .error-text.show {
-      display: block;
-    }
+    .error-text.show { display: block; }
 
     .contact-layout {
       margin: 38px auto 0;
@@ -735,7 +768,7 @@
 
       .subtitle { font-size: 17px; }
 
-      .grid, .stats, .contact-layout, .staff-grid {
+      .grid, .stats, .contact-layout, .staff-grid, .tool-grid {
         grid-template-columns: 1fr;
       }
 
@@ -877,22 +910,10 @@
         <div class="profile-block" id="rimuProfile">
           <h3>Profile: Dr. Rimu</h3>
           <div class="profile-list">
-            <div class="profile-item">
-              <small>Memory</small>
-              <p>Claims 2/10, actually 9/10.</p>
-            </div>
-            <div class="profile-item">
-              <small>Ability</small>
-              <p>Ability to turn a simple question into a 2 hour unforgettable conversation — best ever known to mankind.</p>
-            </div>
-            <div class="profile-item">
-              <small>Hidden Talent</small>
-              <p>Making strangers feel like old friends.</p>
-            </div>
-            <div class="profile-item">
-              <small>Weakness</small>
-              <p>EXAM SCHEDULES.</p>
-            </div>
+            <div class="profile-item"><small>Memory</small><p>Claims 2/10, actually 9/10.</p></div>
+            <div class="profile-item"><small>Ability</small><p>Ability to turn a simple question into a 2 hour unforgettable conversation — best ever known to mankind.</p></div>
+            <div class="profile-item"><small>Hidden Talent</small><p>Making strangers feel like old friends.</p></div>
+            <div class="profile-item"><small>Weakness</small><p>EXAM SCHEDULES.</p></div>
           </div>
         </div>
 
@@ -903,6 +924,31 @@
               <small>Official note</small>
               <p>Happy he met DR Rimu. Ain’t gon remove the Dr... he needs treatment at a discount.</p>
             </div>
+          </div>
+        </div>
+
+        <p class="staff-title">Conversation duration estimator</p>
+
+        <div class="tool-grid">
+          <div class="tool-card">
+            <small>Dr. Rimu Research Lab</small>
+            <strong>How long will it last?</strong>
+            <p>Enter any random topic. The system will estimate the minimum unavoidable conversation damage.</p>
+
+            <div class="conversation-box">
+              <input id="conversationInput" type="text" placeholder="Example: exams, tea, Assam, life, bad decisions..." />
+              <button class="submit-btn" type="button" onclick="estimateConversation()">Estimate duration</button>
+              <div class="conversation-output" id="conversationOutput">
+                <strong id="conversationTime">2 hours</strong>
+                <small id="conversationNote">Conversation classified as emotionally extended.</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="tool-card">
+            <small>Warning</small>
+            <strong>Minimum duration: 2 hours</strong>
+            <p>Maximum recorded estimate has been capped at 24 hours for public safety and device battery health.</p>
           </div>
         </div>
 
@@ -1088,7 +1134,7 @@
       if (theme === "dark") {
         document.body.classList.add("dark");
         themeButton.textContent = "Light";
-        document.querySelector('meta[name="theme-color"]').setAttribute("content", "#090909");
+        document.querySelector('meta[name="theme-color"]').setAttribute("content", "#080808");
       } else {
         document.body.classList.remove("dark");
         themeButton.textContent = "Dark";
@@ -1195,6 +1241,30 @@
       } else {
         jobJoke.classList.remove("show");
       }
+    }
+
+    function estimateConversation() {
+      var input = document.getElementById("conversationInput").value.trim();
+      var output = document.getElementById("conversationOutput");
+      var time = document.getElementById("conversationTime");
+      var note = document.getElementById("conversationNote");
+
+      var base = input.length || 1;
+      var randomBoost = Math.floor(Math.random() * 23);
+      var hours = Math.min(24, Math.max(2, 2 + ((base + randomBoost) % 23)));
+
+      var notes = [
+        "Conversation classified as emotionally extended.",
+        "Simple question detected. Two-hour minimum activated.",
+        "High lore probability. Hydration recommended.",
+        "Tea-level intelligence detected. Duration increased.",
+        "Exam schedule risk low, conversation risk extreme.",
+        "Bad decisions found in input. Timeline expanded."
+      ];
+
+      time.textContent = hours + (hours === 1 ? " hour" : " hours");
+      note.textContent = notes[Math.floor(Math.random() * notes.length)];
+      output.classList.add("show");
     }
 
     document.getElementById("sexForm").addEventListener("submit", function(event) {
