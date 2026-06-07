@@ -239,6 +239,42 @@
           </div>
         </div>
 
+<p class="staff-title">Emergency Hotline</p>
+
+<div class="tool-grid">
+
+  <div class="tool-card">
+    <small>Emergency Contact</small>
+    <strong>Dr. Rimu Hotline</strong>
+    <p>For urgent academic, emotional, tea-related, or lore emergencies.</p>
+
+    <button class="submit-btn" type="button" onclick="rimuHotline()">
+      Contact Dr. Rimu
+    </button>
+
+    <div class="conversation-output" id="rimuHotlineOutput">
+      <strong>Hotline Status</strong>
+      <small>Shreya is currently eating her 4th icecream. Please don't disturb.</small>
+    </div>
+  </div>
+
+  <div class="tool-card">
+    <small>Emergency Contact</small>
+    <strong>Somie Hotline</strong>
+    <p>For management issues, confusion, and emergency damage control.</p>
+
+    <button class="submit-btn" type="button" onclick="somieHotline()">
+      Contact Somie
+    </button>
+
+    <div class="conversation-output" id="somieHotlineOutput">
+      <strong>Hotline Status</strong>
+      <small>You have reached Somie. He needs help too. Do it yourself.</small>
+    </div>
+  </div>
+
+</div>
+        
         <p class="staff-title">Application form</p>
         <form id="sexForm">
           <label for="sexName">Name</label>
@@ -401,6 +437,13 @@
     }
 
     document.getElementById("sexForm").addEventListener("submit",function(e){e.preventDefault();document.getElementById("applicationResult").classList.add("show");this.reset();document.getElementById("jobJoke").classList.remove("show")});
+    function rimuHotline() {
+  document.getElementById("rimuHotlineOutput").classList.add("show");
+}
+
+function somieHotline() {
+  document.getElementById("somieHotlineOutput").classList.add("show");
+}
     applyTheme(localStorage.getItem("simpcorpTheme")||"light");
   </script>
 </body>
